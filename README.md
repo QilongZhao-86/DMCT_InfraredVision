@@ -1,10 +1,10 @@
-# Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception
+# SAM-SPL: Infrared Small-Target Detection
 
 **Paper authors:** Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu.
 
-This repository accompanies the accepted manuscript *Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception*. The paper studies a data-model collaborative transfer framework for adapting visual foundation models to infrared perception.
+This repository releases **SAM-SPL, our model for infrared small-target detection**, together with its training and evaluation code, fixed data splits, and selected checkpoints. It accompanies the accepted manuscript *Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception*.
 
-> **Release scope:** This repository snapshot provides reproducibility materials for infrared small-target detection based on SAM-SPL: source code, launch examples, fixed split lists, and selected checkpoints. It does not currently contain the complete implementations and artifacts for every task discussed in the paper (infrared enhancement, depth estimation, small-target detection, and semantic segmentation). The detection checkpoint results below are this repository's archived runs; they should not be substituted for results in the paper's tables.
+> **Release scope:** SAM-SPL is our model, not a third-party baseline in this code release. This repository provides its infrared small-target detection implementation and reproducibility materials. It does not currently contain complete implementations and artifacts for every task discussed in the paper (infrared enhancement, depth estimation, small-target detection, and semantic segmentation). The checkpoint results below describe the archived runs included with this repository; consult the paper for its reported results and protocols.
 
 ## Paper overview
 
@@ -17,9 +17,9 @@ Infrared perception is affected by a modality gap between visible-light pretrain
 
 The manuscript evaluates the framework on infrared image enhancement, depth estimation, small-target detection, and semantic segmentation. See the paper for its complete method, protocols, comparisons, and results.
 
-## What is included here
+## SAM-SPL model and released code
 
-- SAM-SPL model and training code in `sam_spl/`, `training/`, `dataset/`, `train_final.py`, and `training.py`.
+- Our SAM-SPL model and training code in `sam_spl/`, `training/`, `dataset/`, `train_final.py`, and `training.py`.
 - Baseline and learned noise-generator/bilevel training entry points.
 - Environment-variable-based Linux examples in `scripts/`; no lab-server paths are embedded in these scripts.
 - Fixed train/validation IDs and the canonical IRSTDID-SKY official test IDs in `reproducibility/`.
