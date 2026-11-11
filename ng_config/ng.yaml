@@ -1,0 +1,198 @@
+# # =========================
+# # NG (Neural Generator) config
+# # =========================
+
+# degradation:
+
+#   ng_types:
+#     - LC
+#     - Blur
+#     - Noise
+
+#   # 每个 batch 是否随机组合退化
+#   random_order: true
+
+#   # 每个样本应用退化的概率
+#   apply_prob: 0.1
+
+
+# # -------------------------
+# # Blur config
+# # -------------------------
+# Blur:
+#   kernel_size: [3]
+#   sigma:
+#     min: 0.2
+#     max: 0.3
+#   type: gaussian   # gaussian | motion
+#   prob: 0.3
+
+
+# # -------------------------
+# # Noise config
+# # -------------------------
+# Noise:
+#   type: gaussian   # gaussian | poisson
+#   sigma:
+#     min: 0.0
+#     max: 0.01
+#   prob: 0.3
+
+
+# # -------------------------
+# # Contrast / intensity degradation
+# # -------------------------
+# LC:
+#   alpha:
+#     min: 0.95
+#     max: 1.05
+#   beta:
+#     min: -0.01
+#     max: 0.01
+#   prob: 0.3
+
+
+# # =========================
+# # NG training strategy
+# # =========================
+# training:
+
+#   # NG 训练起止 epoch（你代码里的 start_epo / end_epo）
+#   start_epoch: 50
+#   end_epoch: 200
+
+#   # NG loss 权重（如果你后面加正则）
+#   loss_weight: 0.1
+
+#   # 是否约束退化能量（防止 NG 发疯）
+#   energy_constraint: true
+#   max_energy: 0.15
+
+#   # 是否 detach detector 输出作为 anchor
+#   detach_clean_prediction: true
+
+
+# # =========================
+# # Optimizer (NG)
+# # =========================
+# optimizer:
+#   type: AdamW
+#   lr: 1e-4
+#   betas: [0.9, 0.999]
+#   weight_decay: 1e-4
+#   eps: 1e-8
+
+
+# # =========================
+# # Logging / debug
+# # =========================
+# log:
+#   visualize_samples: true
+#   visualize_every: 500
+#   save_lq_images: false
+
+
+
+# =========================
+# NG (Neural Generator) config
+# =========================
+
+degradation:
+
+  ng_types:
+    - LC
+    - Blur
+    - Noise
+
+  # 随机组合退化是对的
+  random_order: true
+
+  # 这一项非常关键：你现在 0.1 太低了
+  # bilevel 里 NG 学不到稳定梯度
+  apply_prob: 0.3
+
+
+# -------------------------
+# Blur config
+# -------------------------
+Blur:
+  # 保留小核，别一上来就毁灭世界
+  kernel_size: [3, 5]
+
+  # sigma 不要太“精致”
+  # 0.2–0.3 基本只是轻微平滑
+  sigma:
+    min: 0.4
+    max: 0.8
+
+  type: gaussian
+  prob: 0.3
+
+
+# -------------------------
+# Noise config
+# -------------------------
+Noise:
+  type: gaussian
+
+  # 这是最容易“看着小，实际上最狠”的地方
+  # 0.0–0.01 是高频白噪声 → 对小目标极其致命
+  # 改成稍微可感知、但仍温和的区间
+  sigma:
+    min: 0.01
+    max: 0.03
+
+  prob: 0.3
+
+
+# -------------------------
+# Contrast / intensity degradation
+# -------------------------
+LC:
+  # 你现在这个区间几乎不改变判别边界
+  # NG 学不到“怎么伤害 detector”
+  alpha:
+    min: 0.85
+    max: 1.15
+
+  beta:
+    min: -0.05
+    max: 0.05
+
+  prob: 0.3
+
+
+# =========================
+# NG training strategy
+# =========================
+training:
+
+  start_epoch: 50
+  end_epoch: 200
+
+  loss_weight: 0.1
+
+  energy_constraint: true
+  max_energy: 0.15
+
+  detach_clean_prediction: true
+
+
+# =========================
+# Optimizer (NG)
+# =========================
+optimizer:
+  type: AdamW
+  lr: 1e-4
+  betas: [0.9, 0.999]
+  weight_decay: 1e-4
+  eps: 1e-8
+
+
+# =========================
+# Logging / debug
+# =========================
+log:
+  visualize_samples: true
+  visualize_every: 500
+  save_lq_images: false

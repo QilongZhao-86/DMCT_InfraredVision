@@ -1,0 +1,49 @@
+# Local/private experiment data
+dataset/NUDT-SIRST/
+dataset/IRSTD-1K/
+dataset/IRSTDID-SKY/
+dataset/NUDT-sea/
+data/**
+logs/**
+*_logs/**
+outputs/**
+checkpoints/**
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Runtime and build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.eggs/
+*.egg-info/
+build/
+dist/
+*.lmdb/
+.ipynb_checkpoints/
+
+# Local credentials/configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+known_hosts*
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local release output
+release-assets/
+BasicSR/tests/data/
+*.log
+*.out
+*.err

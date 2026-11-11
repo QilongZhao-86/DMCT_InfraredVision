@@ -1,0 +1,13 @@
+Reference source archive SHA-256, verified against the local reproduction audit.
+The archive itself is stored separately and is not included in this Git source
+package:
+2f48df59268de8cdcc8803aa7371699ede8e84ba29333044a5a8d840eee9ab9d  SAM_SPL_repro_source_20261020_clean.tar.gz
+
+SHA-256 values of unchanged files from that archive:
+424a9eb009ebe82fb6e1ad836326ac0ade55a09972186212c14b26c5c89aaf6f  training.py
+70d36ea9220847501c0af8a8c0fd15ca4eb5f367f96d4d0eaa738600145f49f8  train_final.py
+70adcf4e8909318028d56b9e342521b86fd9696b75d6310878ec2f717fe1a41d  dataset/image_floder.py
+40d2e47e9c06c8d7b1e6d1015c4dde571f462c29f4853acf8d9cb7ae6440dcec  sam_spl/NG.py
+
+Portable launch examples, documentation, and manifests in this package were
+added during release preparation and are not part of the source archive hash.

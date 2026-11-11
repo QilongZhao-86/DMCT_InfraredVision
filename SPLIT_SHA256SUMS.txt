@@ -1,0 +1,15 @@
+Dataset ID files and SHA-256
+
+NUDT-SIRST: train=564, val=99
+44fcbd5f823772209c330821fab8739016f91d477fea135dc7d818c51d550f1f  reproducibility/NUDT-SIRST/train_ids.txt
+4a98f54d97b42edec71496055f661af340a6524dcc0da5492e36e2e4445f6188  reproducibility/NUDT-SIRST/val_ids.txt
+
+IRSTD-1K: train=680, val=120
+a6bd50d206d7ecc719ca4407db3ba4f3fc62cab1785b42c876bb9cb2086a7a76  reproducibility/IRSTD-1K/train_ids.txt
+92df7e936fad947df037039d2e97244e5d759a3938d31f2a70d1a6db6c766d9b  reproducibility/IRSTD-1K/val_ids.txt
+
+IRSTDID-SKY: official_train=402, train=342, val=60, official_test=98
+363fc3ff40b6072e1e35e04139520cfda232b166809a8e58afb523e12b6411f5  reproducibility/IRSTDID-SKY/official_train_ids.txt
+37f429bb9478b1e166f8fae8701c4fa89ba4a8e7abe9a737a5267e516a41662b  reproducibility/IRSTDID-SKY/official_test_ids.txt
+df5fd77af2bb87a43575d5298b953268081c77d8467051c8c2be07fc2c676097  reproducibility/IRSTDID-SKY/train_ids.txt
+29403ae7dc9b5cebc036b528604e61d57a298cf22cb949b07cb3efda681f05ee  reproducibility/IRSTDID-SKY/val_ids.txt
