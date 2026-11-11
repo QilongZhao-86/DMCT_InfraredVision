@@ -1,51 +1,64 @@
-# SAM-SPL: Infrared Small-Target Detection
+# Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception
 
-Research code for training and evaluating SAM-SPL infrared small-target
-detectors. This repository contains the model implementation, data loader,
-training/evaluation entry points, portable shell examples, and fixed split ID
-files. Dataset images and masks are not included.
+**Paper authors:** Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu.
 
-## Contents
+This repository accompanies the accepted manuscript *Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception*. The paper studies a data-model collaborative transfer framework for adapting visual foundation models to infrared perception.
 
-- `training.py`: baseline training.
-- `train_final.py`: learned-noise-generator and bilevel training.
-- `test_pr_audit.py`: checkpoint evaluation with an explicit test-list option.
-- `sam_spl/`, `training/`, and `dataset/`: model, optimization, and data code.
-- `reproducibility/`: fixed train/validation IDs and the canonical SKY lists.
-- `SPLIT_SHA256SUMS.txt`: split counts and list-file hashes.
-- `scripts/`: environment-variable-driven Linux launch examples.
-- `MODEL_CHECKPOINTS.md`: completed archived checkpoint inventory and metrics.
-- `CHECKPOINT_SHA256SUMS.txt`: hashes for the model release assets.
+> **Release scope:** This repository snapshot provides reproducibility materials for infrared small-target detection based on SAM-SPL: source code, launch examples, fixed split lists, and selected checkpoints. It does not currently contain the complete implementations and artifacts for every task discussed in the paper (infrared enhancement, depth estimation, small-target detection, and semantic segmentation). The detection checkpoint results below are this repository's archived runs; they should not be substituted for results in the paper's tables.
 
-## Requirements
+## Paper overview
 
-Use Linux with a CUDA-capable PyTorch installation. The supplied environment
-file records the environment used for archived runs; it is not a cross-platform
-lockfile. See [`ENVIRONMENT.md`](ENVIRONMENT.md) for setup notes.
+Infrared perception is affected by a modality gap between visible-light pretraining and thermal observations, as well as changing sensor and environmental conditions. The paper proposes to address these issues jointly at the data and model levels:
 
-Download the SAM 2.0 Hiera Tiny pretrained checkpoint from the official SAM 2
-release and place it at:
+1. **Task-responsive data generation** learns how to combine differentiable, physically plausible infrared variations, including low contrast, blur, sensor noise, optical noise, and resolution changes.
+2. **Formation-guided representation** derives complementary structure-dominant and response-detail cues from infrared observations.
+3. **Thermal-aware model transfer** uses those cues to condition lightweight adapters while keeping the foundation-model backbone frozen.
+4. **Single-loop collaborative optimization** updates data generation and model-transfer components together without requiring repeated inner-loop convergence.
+
+The manuscript evaluates the framework on infrared image enhancement, depth estimation, small-target detection, and semantic segmentation. See the paper for its complete method, protocols, comparisons, and results.
+
+## What is included here
+
+- SAM-SPL model and training code in `sam_spl/`, `training/`, `dataset/`, `train_final.py`, and `training.py`.
+- Baseline and learned noise-generator/bilevel training entry points.
+- Environment-variable-based Linux examples in `scripts/`; no lab-server paths are embedded in these scripts.
+- Fixed train/validation IDs and the canonical IRSTDID-SKY official test IDs in `reproducibility/`.
+- Archived checkpoint inventory and SHA-256 records in `MODEL_CHECKPOINTS.md` and `CHECKPOINT_SHA256SUMS.txt`.
+- Dataset acquisition notes, environment notes, and third-party notices.
+
+Datasets are not included. The current release does not include the full enhancement, depth-estimation, or FMB semantic-segmentation pipelines described in the manuscript.
+
+## Archived detection checkpoints
+
+These are artifact-specific records, with their own training histories and evaluation status. See [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) for the full protocol and hashes.
+
+| Dataset / model | Archived training record | Evaluation status |
+|---|---|---|
+| NUDT-SIRST Ours | Legacy 350-epoch run; batch 12; seed 2727 | One recorded evaluation: mIoU 95.13, F1 97.50, nIoU 95.03, Pd 99.05, Fa 2.90 |
+| IRSTD-1K Ours | Legacy 350-epoch run; batch 8; seed 2727; best internal-validation mIoU 70.9068 | No official-test evaluation recorded |
+| IRSTDID-SKY baseline | 300 epochs; batch 8; seed 2727; canonical 342/60/98 train/validation/test split | One recorded official evaluation: mIoU 68.66 |
+
+The NUDT and IRSTD-1K checkpoints are legacy 350-epoch runs, not results from the later 300-epoch candidate grids. Incomplete runs and noncanonical SKY results are excluded. Do not compare or combine results across different splits, training budgets, or checkpoint-selection protocols.
+
+## Setup
+
+Use Linux with a CUDA-capable PyTorch installation. `environment.yml` records the environment used for the archived runs; it is not a cross-platform lockfile. See [`ENVIRONMENT.md`](ENVIRONMENT.md).
+
+Download the SAM 2.0 Hiera Tiny pretrained checkpoint from the official SAM 2 release and place it at:
 
 ```text
 sam_spl/sam2_ckpt/sam2_hiera_tiny.pt
 ```
 
-Do not commit pretrained model weights to the source repository. The archived
-SAM-SPL checkpoints are provided as separate release assets under
-`release-assets/checkpoints/` for local review; upload them to a GitHub Release
-as separate files if their publication is approved.
+Pretrained SAM 2 weights and datasets are not included in this repository. Do not commit them here. The selected SAM-SPL checkpoints are local release assets under `release-assets/checkpoints/` and are excluded from ordinary Git commits; if redistribution is approved, attach them as files to a GitHub Release and verify them against `CHECKPOINT_SHA256SUMS.txt`.
 
 ## Dataset layout
 
-Set `DATA_ROOT` to a directory containing one subdirectory per dataset. Each
-dataset directory must contain `images/` and `masks/`. Training and validation
-ID files are supplied in `reproducibility/<dataset>/`; the dataset itself must
-be obtained from its official provider. See [`DATASETS.md`](DATASETS.md).
+Set `DATA_ROOT` to a directory containing one subdirectory per dataset, with `images/` and `masks/` under each dataset directory. The fixed train/validation ID files are provided in `reproducibility/<dataset>/`. Obtain each dataset from its official provider and follow its terms. See [`DATASETS.md`](DATASETS.md).
 
 ## Training
 
-The scripts require paths through environment variables and contain no
-machine-specific server paths. Example for the baseline:
+The scripts use environment variables for paths and do not contain machine-specific server paths. Example baseline run:
 
 ```bash
 DATA_ROOT=/datasets/IRSTD \
@@ -56,7 +69,7 @@ SAVE_DIR=outputs/nudt-baseline \
 bash scripts/train_baseline.sh
 ```
 
-Example for learned NG with bilevel training:
+Example learned noise-generator with bilevel training:
 
 ```bash
 DATA_ROOT=/datasets/IRSTD \
@@ -67,16 +80,11 @@ NG_STRENGTH_SCALE=0.25 SAVE_DIR=outputs/sky-ours \
 bash scripts/train_ours.sh
 ```
 
-The learned-NG example starts NG and bilevel optimization at epoch 25 and
-retains the trainer's existing loss, alpha schedule, and update equations.
-The examples do not submit cluster jobs; adapt them to your scheduler if
-needed.
+The learned-NG example starts NG and bilevel optimization at epoch 25 and retains the trainer's existing loss, alpha schedule, and update equations. The examples do not submit cluster jobs; adapt them to your scheduler.
 
 ## Evaluation
 
-Evaluate only after locking a checkpoint. Supply the official test ID file
-explicitly through `TEST_LIST`; do not use official-test results for model or
-hyperparameter selection.
+Select a checkpoint using the fixed internal validation split, then lock it before running the matching official test list. Do not use official-test results for checkpoint or hyperparameter selection.
 
 ```bash
 DATA_ROOT=/datasets/IRSTD \
@@ -87,21 +95,10 @@ RESULTS_DIR=outputs/sky-baseline-test \
 bash scripts/evaluate_checkpoint.sh
 ```
 
-## Checkpoints and reported results
+## Paper citation
 
-The release-asset directory contains three completed small-target checkpoints.
-Each result is labeled with its dataset protocol and checkpoint hash in
-[`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md). Historical 300-epoch sweeps,
-partial runs, canceled jobs, and noncanonical SKY results are not part of the
-release inventory.
+Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu, “Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception.” Accepted manuscript. The supplied PDF does not include final publication venue, volume, pages, or DOI; add those details from the publisher's version when available.
 
-## Citation and license
+## License and third-party code
 
-This code release is identified as the SAM-SPL implementation. The repository
-does not claim to be the complete artifact for a separately titled manuscript.
-Add the final paper citation after confirming the exact accepted title and
-author-approved citation.
-
-Third-party source notices are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-The project license must be approved by the code copyright holders before
-public upload; no license is assigned here on their behalf.
+Third-party notices are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). A project license has not been assigned in this repository. Before making the repository public or redistributing code/checkpoints, confirm authorization from the relevant copyright holders and complete [`PUBLICATION_CHECKLIST.md`](PUBLICATION_CHECKLIST.md).
