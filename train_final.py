@@ -11,13 +11,13 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import DataLoader, DistributedSampler
 from omegaconf import OmegaConf
 from dataset.image_floder import ImageFolder
-from sam_spl.base_model import make_adaptor
-from sam_spl.NG import NG 
-# from sam_spl.de_net import DEResNet
+from infrared_model.base_model import make_adaptor
+from infrared_model.NG import NG
+# from infrared_model.de_net import DEResNet
 from training.Adan import Adan
 from training.trainer_final import Trainer
 from training import metricWrapper, seed_everything
-from sam_spl.Adapter import MultiScaleAdapter
+from infrared_model.Adapter import MultiScaleAdapter
 import inspect
 import tokenize
 import io

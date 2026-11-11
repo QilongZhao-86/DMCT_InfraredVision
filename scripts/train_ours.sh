@@ -29,7 +29,7 @@ cd "$ROOT"
   --data_path "$DATA_ROOT" \
   --train_split_file "$SPLIT_DIR/train_ids.txt" \
   --val_split_file "$SPLIT_DIR/val_ids.txt" \
-  --config_path "$ROOT/sam_spl/configs/spl_t.yaml" \
+  --config_path "$ROOT/infrared_model/configs/spl_t.yaml" \
   --ng_config_path "$ROOT/ng_config/ng.yaml" \
   --ng_start_epoch "${NG_START_EPOCH:-25}" \
   --ng_end_epoch "$EPOCHS" \
@@ -37,5 +37,5 @@ cd "$ROOT"
   --bilevel_end_epoch "$EPOCHS" \
   --ng_strength_scale "$NG_STRENGTH_SCALE" \
   --save_step "${SAVE_STEP:-10}" \
-  --note "${RUN_NOTE:-sam-spl-ours}" \
+  --note "${RUN_NOTE:-dmct-ours}" \
   --save_dir "$SAVE_DIR"

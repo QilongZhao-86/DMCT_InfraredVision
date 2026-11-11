@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from sam_spl.base_layer import Res_block
+from infrared_model.base_layer import Res_block
 # from .Adapter import MultiScaleAdapter
 # from .freq_decompose import HighLowPyramid
 from .hl_new import MultiScaleAdapter,HighLowPyramid

@@ -1,5 +1,5 @@
 """
-Metrics Configuration Module for SAM-SPL Model Evaluation
+Metrics Configuration Module for DMCT Model Evaluation
 
 This module contains custom metric implementations specifically designed for
 infrared small target detection and segmentation tasks. It provides:
@@ -252,7 +252,7 @@ def batch_intersection_union(output, target):
 
 class metricWrapper:
     """
-    Custom metric wrapper class for SAM-SPL model evaluation.
+    Custom metric wrapper class for DMCT model evaluation.
     
     This is a custom implementation that combines multiple evaluation metrics
     into a single convenient interface. It wraps two main metric calculators:
@@ -260,7 +260,7 @@ class metricWrapper:
     - PD_FAmeter: for Probability of Detection and False Alarm rate
     
     This class is designed specifically for infrared small target detection tasks
-    and provides a comprehensive evaluation suite for SAM-SPL models.
+    and provides a comprehensive evaluation suite for DMCT models.
     
     Usage Example:
         metric_wrapper = metricWrapper()

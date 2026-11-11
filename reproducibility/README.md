@@ -5,7 +5,7 @@ validation IDs used by the archived protocol for each dataset. They do not
 contain image or mask data.
 
 For IRSTDID-SKY, `official_train_ids.txt` and `official_test_ids.txt` reproduce
-the upstream SAM-SPL list files. The internal validation list is derived only
+the upstream benchmark list files. The internal validation list is derived only
 from the official training IDs; the official test list is kept separate.
 
 For NUDT-SIRST and IRSTD-1K, the archived train/validation IDs are included.

@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 
 from dataset.image_floder import ImageFolder
 from metrics import PD_FAmeter, mIoUmeter, nIoUmeter
-from sam_spl.base_model import make_adaptor
+from infrared_model.base_model import make_adaptor
 from training import seed_everything
 
 

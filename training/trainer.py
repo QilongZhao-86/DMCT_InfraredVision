@@ -1,7 +1,7 @@
 """
-Trainer Module for SAM-SPL Model Training
+Trainer Module for DMCT Model Training
 
-This module provides a comprehensive training framework for the SAM-SPL model.
+This module provides a comprehensive training framework for the DMCT model.
 It supports both single-GPU and distributed training, with features for
 training, validation, checkpointing, and metric evaluation.
 
@@ -28,7 +28,7 @@ from .metrics_config import metricWrapper
 
 class Trainer:
     """
-    A comprehensive training class for SAM-SPL models.
+    A comprehensive training class for DMCT models.
     
     This class handles the complete training lifecycle including:
     - Model training and validation

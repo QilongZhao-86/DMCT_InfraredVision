@@ -1,4 +1,4 @@
-"""Base model utilities for SAM-SPL.
+"""Base model utilities for DMCT.
 
 This module provides adapter components that connect a SAM-style image encoder
 with the project's custom decoder and mask heads. The key elements are:
@@ -14,14 +14,14 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from sam_spl.base_layer import DenseBlock, SELayer, VGGBlock, Res_CBAM_block
-from sam_spl.UpBlock_layer import UpBlock_attention
-from sam_spl.hieradet import Hiera
-from sam_spl.pmt_generator import MultiScaleBlock, MultiScalePositionalEncoder
+from infrared_model.base_layer import DenseBlock, SELayer, VGGBlock, Res_CBAM_block
+from infrared_model.UpBlock_layer import UpBlock_attention
+from infrared_model.hieradet import Hiera
+from infrared_model.pmt_generator import MultiScaleBlock, MultiScalePositionalEncoder
 
-from sam_spl.transformer import TwoWayTransformer
-from sam_spl.utils import LayerNorm2d, MLP
-from sam_spl.image_encoder import ImageEncoder
+from infrared_model.transformer import TwoWayTransformer
+from infrared_model.utils import LayerNorm2d, MLP
+from infrared_model.image_encoder import ImageEncoder
 
 
 def weights_init_kaiming(m):

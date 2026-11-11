@@ -28,6 +28,6 @@ cd "$ROOT"
   --data_path "$DATA_ROOT" \
   --train_split_file "$SPLIT_DIR/train_ids.txt" \
   --val_split_file "$SPLIT_DIR/val_ids.txt" \
-  --config_path "$ROOT/sam_spl/configs/spl_t.yaml" \
+  --config_path "$ROOT/infrared_model/configs/spl_t.yaml" \
   --save_dir "$SAVE_DIR" \
   --gpu "${GPU_ID:-0}"

@@ -38,7 +38,7 @@ def _resolve_file(folder, item):
 
 
 class ImageFolder(Dataset):
-    """Official-style preprocessing for the three SAM-SPL IRSTD datasets."""
+    """Official-style preprocessing for the three DMCT IRSTD datasets."""
 
     def __init__(self, path, data_set='NUDT-SIRST', istraining=True,
                  base_size=256, crop_size=256, suffix='.png', split_file=None):

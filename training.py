@@ -3,7 +3,7 @@ import argparse
 import torch
 import torch.nn as nn
 import torch.distributed as dist
-from sam_spl.base_model import make_adaptor
+from infrared_model.base_model import make_adaptor
 from training.Adan import Adan
 from dataset.image_floder import ImageFolder
 from training import Trainer, seed_everything, metricWrapper
@@ -16,7 +16,7 @@ import wandb
 def main():
     # Argument parsing
     parser = argparse.ArgumentParser(
-        description="SAM-SPL distributed training script supporting multiple datasets and distributed training configuration."
+        description="DMCT distributed training script supporting multiple datasets and distributed training configuration."
     )
     parser.add_argument(
         "--dataset",
@@ -46,7 +46,7 @@ def main():
     )
     parser.add_argument(
         "--config_path",
-        default="./sam_spl/configs/spl_t.yaml",
+        default="./infrared_model/configs/spl_t.yaml",
         type=str,
         help="Path to config file for model adaptor",
     )
