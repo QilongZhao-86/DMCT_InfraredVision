@@ -10,7 +10,6 @@ import torch.nn.functional as F
 from .metrics_config import metricWrapper
 # from .blo_strategy import one_step_bilevel_fd
 # from tqdm import tqdm
-from .Adan import Adan
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torchvision.utils import save_image
 
@@ -63,8 +62,14 @@ class Trainer:
         ]
 
         self.optimizer_ng = torch.optim.SGD(self.ng_params, lr=lr_model*0.01, weight_decay=1e-6)
-        self.optimizer_lower = Adan(self.lower_params, lr=lr_model, weight_decay=1e-4)
-        self.optimizer_upper = Adan(self.upper_params, lr=lr_model * 0.5, weight_decay=1e-4)
+        # The manuscript specifies Adam for the detector. Keep the existing
+        # bilevel parameter groups and their relative learning-rate schedule.
+        self.optimizer_lower = torch.optim.Adam(
+            self.lower_params, lr=lr_model, weight_decay=1e-4
+        )
+        self.optimizer_upper = torch.optim.Adam(
+            self.upper_params, lr=lr_model * 0.5, weight_decay=1e-4
+        )
 
         self.sched_ng = torch.optim.lr_scheduler.CosineAnnealingLR(
             self.optimizer_ng, T_max=epoch, eta_min=eta_min

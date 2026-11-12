@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the associated article in preferred-citation."
+title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception"
+type: software
+authors:
+  - family-names: Liu
+    given-names: Zhu
+  - family-names: Zhao
+    given-names: Qilong
+  - family-names: Fang
+    given-names: Zhirui
+  - family-names: Zhang
+    given-names: Benzhuang
+  - family-names: Liu
+    given-names: Jinyuan
+  - family-names: Liu
+    given-names: Risheng
+repository-code: "https://github.com/QilongZhao-86/DMCT_InfraredVision"
+preferred-citation:
+  type: article
+  title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception"
+  authors:
+    - family-names: Liu
+      given-names: Zhu
+    - family-names: Zhao
+      given-names: Qilong
+    - family-names: Fang
+      given-names: Zhirui
+    - family-names: Zhang
+      given-names: Benzhuang
+    - family-names: Liu
+      given-names: Jinyuan
+    - family-names: Liu
+      given-names: Risheng
+  journal: "IEEE Transactions on Pattern Analysis and Machine Intelligence"

@@ -4,9 +4,10 @@ import torch
 import torch.nn as nn
 import torch.distributed as dist
 from infrared_model.base_model import make_adaptor
-from training.Adan import Adan
 from dataset.image_floder import ImageFolder
+from dataset.experiment_defaults import get_training_defaults
 from training import Trainer, seed_everything, metricWrapper
+from training.run_metadata import write_training_run_metadata
 from loguru import logger
 import datetime
 import yaml
@@ -22,11 +23,11 @@ def main():
         "--dataset",
         default="NUDT-SIRST",
         type=str,
-        help="Dataset name, e.g., NUDT-SIRST, IRSTDID=SKY, IRSTD-1k, etc.",
+        help="Dataset name: NUDT-SIRST, IRSTD-1K, or IRSTDID-SKY.",
     )
-    parser.add_argument("--image_size", default=256, type=int, help="Input image size")
+    parser.add_argument("--image_size", default=None, type=int, help="Input image size")
     parser.add_argument(
-        "--batch_size", default=12, type=int, help="Batch size for training"
+        "--batch_size", default=None, type=int, help="Batch size for training"
     )
     parser.add_argument(
         "--epoch", default=300, type=int, help="Number of training epochs"
@@ -79,10 +80,15 @@ def main():
         "--gpu", default=0, type=int, help="GPU id to use (if not using DDP)"
     )
     args = parser.parse_args()
+    dataset_defaults = get_training_defaults(args.dataset)
+    args.image_size = args.image_size or dataset_defaults["image_size"]
+    args.batch_size = args.batch_size or dataset_defaults["batch_size"]
     if args.num_workers < 0:
         parser.error("--num_workers must be non-negative")
-    if bool(args.train_split_file) != bool(args.val_split_file):
-        parser.error("--train_split_file and --val_split_file must be supplied together")
+    if not args.train_split_file or not args.val_split_file:
+        parser.error("Paper-protocol training requires explicit --train_split_file and --val_split_file")
+    manifest = write_training_run_metadata(args, method="plain_detector")
+    print(f"Run metadata: {manifest}")
     seed_everything(args.seed)
     distributed = args.use_ddp
     local_rank = int(os.environ.get("LOCAL_RANK", args.local_rank))
@@ -172,7 +178,7 @@ def main():
 #==================流程完成=====================================
 
     # Set up optimizer, scheduler, loss function
-    optimizer = Adan(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
         optimizer, T_max=args.epoch, eta_min=args.eta_min
     )

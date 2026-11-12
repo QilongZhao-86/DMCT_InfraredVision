@@ -1,14 +1,17 @@
 import os
 import time
 import argparse
+from pathlib import Path
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
 from dataset.image_floder import ImageFolder
+from dataset.experiment_defaults import get_training_defaults
 from metrics import PD_FAmeter, mIoUmeter, nIoUmeter
 from infrared_model.base_model import make_adaptor
 from training import seed_everything
+from training.run_metadata import write_evaluation_metadata
 
 
 def extract_state_dict(ckpt):
@@ -197,22 +200,33 @@ def evaluation(test_loader, predictor, device, save_pr_npz_path=None, output_typ
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--local_rank", default=-1, type=int)
-    parser.add_argument("--dataset", default="IRSTD-1k", type=str)
-    parser.add_argument("--image_size", default=512, type=int)
-    parser.add_argument("--batch_size", default=12, type=int)
+    parser.add_argument("--dataset", default="IRSTD-1K", type=str)
+    parser.add_argument("--image_size", default=None, type=int)
+    parser.add_argument("--batch_size", default=None, type=int)
     parser.add_argument("--data_path", default="./dataset", type=str)
     parser.add_argument("--weights", default="./checkpoints/IRSTD-1k.pt", type=str)
     parser.add_argument("--device", default="cuda:1", type=str)
-    parser.add_argument("--seed", default=111, type=int)
+    parser.add_argument("--seed", default=2727, type=int)
     parser.add_argument("--num_workers", default=7, type=int)
 
     parser.add_argument("--save_pr_npz", default="", type=str)
     parser.add_argument("--output_type", default="logit", choices=["logit", "prob"])
     parser.add_argument("--sample_per_image", default=1000, type=int)
-    parser.add_argument("--test_split_file", default="", type=str)
+    parser.add_argument("--test_split_file", required=True, type=str)
 
     parser.add_argument("--per_image_csv", default="")
     args = parser.parse_args()
+    dataset_defaults = get_training_defaults(args.dataset)
+    args.image_size = args.image_size or dataset_defaults["image_size"]
+    args.batch_size = args.batch_size or dataset_defaults["batch_size"]
+
+    output_dir = (
+        os.path.dirname(os.path.abspath(args.per_image_csv))
+        if args.per_image_csv
+        else os.path.join(os.getcwd(), "outputs", "evaluation")
+    )
+    manifest = write_evaluation_metadata(args, output_dir=Path(output_dir))
+    print(f"Evaluation metadata: {manifest}")
 
     seed_everything(args.seed)
 
@@ -235,7 +249,7 @@ def main():
         istraining=False,
         base_size=args.image_size,
         crop_size=args.image_size,
-        split_file=args.test_split_file or None,
+        split_file=args.test_split_file,
     )
     test_loader = DataLoader(
         test_set,

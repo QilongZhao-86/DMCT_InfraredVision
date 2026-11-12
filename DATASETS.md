@@ -2,8 +2,11 @@
 
 Dataset images and masks are not included. Obtain NUDT-SIRST, IRSTD-1K, and
 IRSTDID-SKY from their official providers and follow each provider's terms.
-Each dataset root must contain the canonical dataset directory with `images/`
-and `masks/` subdirectories. Training and validation ID lists are supplied
+`DATA_ROOT` must contain the canonical dataset directories with `images/` and
+`masks/` subdirectories. For NUDT-SIRST and IRSTD-1K, it must also contain the
+provider's official ID lists at `set_configs/<canonical-name>/train.txt` and
+`test.txt`. SKY's upstream lists are included in
+`reproducibility/IRSTDID-SKY/`. Training and validation ID lists are supplied
 under `reproducibility/`.
 
 The included SKY protocol uses the upstream 402-ID training list and 98-ID

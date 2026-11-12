@@ -11,12 +11,13 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import DataLoader, DistributedSampler
 from omegaconf import OmegaConf
 from dataset.image_floder import ImageFolder
+from dataset.experiment_defaults import get_training_defaults
 from infrared_model.base_model import make_adaptor
 from infrared_model.NG import NG
 # from infrared_model.de_net import DEResNet
-from training.Adan import Adan
 from training.trainer_final import Trainer
 from training import metricWrapper, seed_everything
+from training.run_metadata import write_training_run_metadata
 from infrared_model.Adapter import MultiScaleAdapter
 import inspect
 import tokenize
@@ -81,8 +82,8 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--dataset", default="NUDT-SIRST")
-    parser.add_argument("--image_size", type=int, default=256)
-    parser.add_argument("--batch_size", type=int, default=12)
+    parser.add_argument("--image_size", type=int, default=None)
+    parser.add_argument("--batch_size", type=int, default=None)
     parser.add_argument("--epoch", type=int, default=300)
     parser.add_argument("--lr", type=float, default=0.01)
     parser.add_argument("--NGsave", type=bool, default=False)
@@ -93,11 +94,11 @@ def main():
     parser.add_argument("--ng_config_path", default=None)
     parser.add_argument("--de_net_path", default=None)
     parser.add_argument("--resume", default=None)
-    parser.add_argument("--ng_start_epoch", type=int, default=10)
-    parser.add_argument("--ng_end_epoch", type=int, default=20)
-    parser.add_argument("--bilevel_start_epoch", type=int, default=10)
-    parser.add_argument("--bilevel_end_epoch", type=int, default=20)
-    parser.add_argument("--save_step", type=int, default=20)
+    parser.add_argument("--ng_start_epoch", type=int, default=25)
+    parser.add_argument("--ng_end_epoch", type=int, default=None)
+    parser.add_argument("--bilevel_start_epoch", type=int, default=25)
+    parser.add_argument("--bilevel_end_epoch", type=int, default=None)
+    parser.add_argument("--save_step", type=int, default=10)
     parser.add_argument("--use_ddp", action="store_true")
     parser.add_argument("--local_rank", type=int, default=0)
     parser.add_argument("--eta_min",default=1e-6,type=float,help="Minimum learning rate for scheduler",)
@@ -111,13 +112,25 @@ def main():
     parser.add_argument("--ng_strength_scale", type=float, default=0.5)
 
     args = parser.parse_args()
+    dataset_defaults = get_training_defaults(args.dataset)
+    args.image_size = args.image_size or dataset_defaults["image_size"]
+    args.batch_size = args.batch_size or dataset_defaults["batch_size"]
+    args.ng_end_epoch = args.ng_end_epoch or args.epoch
+    args.bilevel_end_epoch = args.bilevel_end_epoch or args.epoch
     if args.num_workers < 0:
         parser.error("--num_workers must be non-negative")
+    if not 1 <= args.ng_start_epoch <= args.ng_end_epoch <= args.epoch:
+        parser.error("NG epoch range must be within the training epoch range")
+    if not 1 <= args.bilevel_start_epoch <= args.bilevel_end_epoch <= args.epoch:
+        parser.error("bilevel epoch range must be within the training epoch range")
     seed_everything(args.seed)
-    if bool(args.train_split_file) != bool(args.val_split_file):
-        parser.error("--train_split_file and --val_split_file must be supplied together")
+    if not args.train_split_file or not args.val_split_file:
+        parser.error("Paper-protocol training requires explicit --train_split_file and --val_split_file")
     if args.train_split_file and args.ng_strength_scale < 0:
         parser.error("--ng_strength_scale must be non-negative")
+
+    manifest = write_training_run_metadata(args, method="learned_ng_bilevel")
+    print(f"Run metadata: {manifest}")
 
     init_ddp(args)
 

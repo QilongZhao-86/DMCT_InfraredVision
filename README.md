@@ -4,7 +4,7 @@
 
 **Zhu Liu · Qilong Zhao · Zhirui Fang · Benzhuang Zhang · Jinyuan Liu · Risheng Liu**
 
-[![Paper](https://img.shields.io/badge/Paper-Accepted-2563EB?style=for-the-badge)](#citation)
+[![Paper](https://img.shields.io/badge/TPAMI-Regular%20Paper-Accepted-2563EB?style=for-the-badge)](#citation)
 [![Task](https://img.shields.io/badge/Domain-Infrared%20Vision-0891B2?style=for-the-badge)](#method-overview)
 [![Code](https://img.shields.io/badge/Code-PyTorch-EE4C2C?style=for-the-badge)](#training)
 [![Reproducibility](https://img.shields.io/badge/Artifacts-Reproducibility-7C3AED?style=for-the-badge)](#checkpoints)
@@ -21,7 +21,7 @@
 
 ## 📢 News
 
-- The manuscript has been accepted. Publication venue and DOI will be added when final publisher metadata are available.
+- **6 Nov 2026:** Accepted as a Regular Paper in *IEEE Transactions on Pattern Analysis and Machine Intelligence* (manuscript **TPAMI-2026-07-2953.R1**). DOI and final volume/issue/page or article-number details will be added after publication.
 - This repository currently releases the infrared small-target detection pipeline and its selected reproducibility artifacts.
 
 ## ✨ Method overview
@@ -48,15 +48,47 @@ The following values are transcribed from the paper's Table IV (the proposed met
 
 > **Checkpoint status:** The final checkpoints corresponding to these paper results have not yet been supplied for this release. They will be added with their matching protocol details and SHA-256 hashes when available. The separate [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) file documents earlier archived runs; those weights and metrics are not the source of the table above.
 
+### Infrared semantic segmentation on FMB
+
+The final manuscript also reports semantic segmentation on FMB using DINOv2, with AdamW at an initial learning rate of `1e-4`. The adapter is inserted after transformer blocks, with frequency decomposition applied in feature space. Table V evaluates ×2 and ×4 resolution degradation; Table VI evaluates moderate and severe stripe noise. The manuscript does not specify batch size, random seed, or training epochs for this task. The values below are the paper's reported mIoU percentages, not results reproduced from assets in this release.
+
+| FMB evaluation setting | Method | mIoU (%) |
+|:--|:--:|--:|
+| ×2 scaling factor | **Ours** | **52.03** |
+| ×4 scaling factor | **Ours** | **51.13** |
+| Moderate stripe noise | **Ours** | **50.93** |
+| Severe stripe noise | **Ours** | **50.56** |
+
+This repository release does not include the complete FMB segmentation implementation, its trained checkpoint, or the data. The table records manuscript results only.
+
+## 🧪 Small-target detection configuration
+
+The manuscript's small-target detection setup specifies the following shared training settings. False-alarm rate values in the paper are reported in units of `10⁻⁴`.
+
+| Dataset | Input resolution | Training | Optimizer | Initial learning rate |
+|:--|:--:|:--:|:--:|--:|
+| NUDT-SIRST | 256 × 256 | 300 epochs | Adam | 0.01 |
+| IRSTD-1K | 512 × 512 | 300 epochs | Adam | 0.01 |
+| IRSTDID-SKY | 512 × 512 | 300 epochs | Adam | 0.01 |
+
+The manuscript does not report batch size or random seed. The commands below use the repository's recorded launch settings (batch size 12 for NUDT-SIRST, 8 for IRSTD-1K and IRSTDID-SKY; seed 2727 for the included fixed split manifests). These are release settings, not values attributed to the paper.
+
+The detector's lower and upper bilevel parameter groups use Adam in this release; the upper group retains the trainer's existing half-rate setting. The noise generator keeps its separate SGD optimizer. This change aligns the detector optimizer family with the manuscript while preserving the existing bilevel losses, alpha schedule, and update equations. The earlier checkpoints predate this optimizer alignment, and their per-run source/config records are not included here. Do not present them as Adam-based reproductions or as the weights that produced the manuscript's Table IV results.
+
+Other implementation-specific hyperparameters (including noise-generator scaling and save cadence) are not specified in the manuscript. The launch scripts accept explicit overrides for these values; their defaults are implementation choices, not paper-reported settings.
+
 This release contains the small-target detection code and artifacts. It does not yet include complete implementations and artifacts for all four task instantiations described in the manuscript. Dataset images and masks are not included.
 
 ## 🧰 Contents
 
 - Model and training code: `infrared_model/`, `training/`, `dataset/`, `train_final.py`, and `training.py`.
+- Paper-aligned dataset defaults: `dataset/experiment_defaults.py`.
+- Per-run config, split, and source-hash capture: `training/run_metadata.py`.
 - Portable Linux launch examples: `scripts/`.
 - Fixed train/validation IDs and official IRSTDID-SKY test IDs: `reproducibility/`.
 - Checkpoint inventory and hashes: `MODEL_CHECKPOINTS.md`, `CHECKPOINT_SHA256SUMS.txt`.
 - Dataset and environment guidance: [`DATASETS.md`](DATASETS.md), [`ENVIRONMENT.md`](ENVIRONMENT.md).
+- Citation metadata: `CITATION.cff`.
 - Third-party notices: [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 ## ⚙️ Setup
@@ -73,35 +105,48 @@ Pretrained SAM 2 weights and datasets are not included. Do not commit them to th
 
 ## 🗂️ Dataset layout
 
-Set `DATA_ROOT` to a directory containing one subdirectory per dataset, with `images/` and `masks/` under each dataset directory. Fixed train/validation ID files are supplied in `reproducibility/<dataset>/`. Obtain datasets from their official providers and follow their terms. See [`DATASETS.md`](DATASETS.md).
+Set `DATA_ROOT` to the dataset package root. It must contain each canonical dataset directory with `images/` and `masks/`, plus the provider's `set_configs/<dataset>/train.txt` and `test.txt` lists for NUDT-SIRST and IRSTD-1K. SKY's canonical lists are supplied in `reproducibility/IRSTDID-SKY/`. Fixed train/validation ID files are supplied in `reproducibility/<dataset>/`. Obtain image and mask data from official providers and follow their terms. See [`DATASETS.md`](DATASETS.md).
 
 ## 🚀 Training
 
-The launch scripts take paths from environment variables and contain no machine-specific server paths.
+The launch scripts take paths from environment variables and contain no machine-specific server paths. They choose resolution and batch defaults from the dataset name, and accept explicit overrides. The examples use the paper-reported resolution, epoch count, detector optimizer, and initial learning rate.
 
-**Baseline**
+**NUDT-SIRST**
 
 ```bash
 DATA_ROOT=/datasets/IRSTD \
 SPLIT_DIR=reproducibility/NUDT-SIRST \
 DATASET=NUDT-SIRST \
 BATCH_SIZE=12 IMAGE_SIZE=256 EPOCHS=300 LR=0.01 SEED=2727 \
-SAVE_DIR=outputs/nudt-baseline \
-bash scripts/train_baseline.sh
+SAVE_DIR=outputs/nudt-ours \
+bash scripts/train_ours.sh
 ```
 
-**Learned noise generator + bilevel training**
+**IRSTD-1K**
+
+```bash
+DATA_ROOT=/datasets/IRSTD \
+SPLIT_DIR=reproducibility/IRSTD-1K \
+DATASET=IRSTD-1K \
+BATCH_SIZE=8 IMAGE_SIZE=512 EPOCHS=300 LR=0.01 SEED=2727 \
+SAVE_DIR=outputs/irstd1k-ours \
+bash scripts/train_ours.sh
+```
+
+**IRSTDID-SKY**
 
 ```bash
 DATA_ROOT=/datasets/IRSTD \
 SPLIT_DIR=reproducibility/IRSTDID-SKY \
 DATASET=IRSTDID-SKY \
-BATCH_SIZE=8 IMAGE_SIZE=512 EPOCHS=300 LR=0.005 SEED=2727 \
-NG_STRENGTH_SCALE=0.25 SAVE_DIR=outputs/sky-ours \
+BATCH_SIZE=8 IMAGE_SIZE=512 EPOCHS=300 LR=0.01 SEED=2727 \
+SAVE_DIR=outputs/sky-ours \
 bash scripts/train_ours.sh
 ```
 
-The learned-NG example starts NG and bilevel optimization at epoch 25 and retains the trainer's existing loss, alpha schedule, and update equations. The scripts do not submit cluster jobs; adapt them to your scheduler.
+The learned-NG training script starts NG and bilevel optimization at epoch 25 and retains the trainer's existing loss, alpha schedule, and update equations. The scripts do not submit cluster jobs; adapt them to your scheduler. For a paper-config run, start from the pretrained SAM 2 backbone and a fresh optimizer state; the archived checkpoints' optimizer provenance is not recorded. The supported reproductions are the `train_final.py`/`scripts/train_ours.sh` path and the plain-detector `training.py`/`scripts/train_baseline.sh` comparison path. Other trainer files are retained as experimental implementations and are not the documented reproduction entrypoints.
+
+Each training run writes `run_config.json`, `source_sha256.txt`, and exact copies of its train/validation ID lists under `SAVE_DIR`. Reusing a populated run directory for a new run is rejected; use a new `SAVE_DIR` (or `--resume` for a recorded Ours run). The official test list is read only to check split disjointness; its images and masks are not loaded during training or checkpoint selection.
 
 ## 🔬 Evaluation
 
@@ -110,15 +155,17 @@ Select a checkpoint using the fixed internal-validation split, then lock it befo
 ```bash
 DATA_ROOT=/datasets/IRSTD \
 DATASET=IRSTDID-SKY IMAGE_SIZE=512 BATCH_SIZE=8 SEED=2727 \
-WEIGHTS=release-assets/checkpoints/IRSTDID-SKY_baseline_job6854_canonical300.pth \
+WEIGHTS=/path/to/sky_ours_checkpoint.pth \
 TEST_LIST=reproducibility/IRSTDID-SKY/official_test_ids.txt \
-RESULTS_DIR=outputs/sky-baseline-test \
+RESULTS_DIR=outputs/sky-ours-test \
 bash scripts/evaluate_checkpoint.sh
 ```
 
+The evaluator writes a timestamped `evaluation_config_*.json`, a source-hash manifest, and a copy of the exact test ID list under `RESULTS_DIR`. It also records the evaluated checkpoint's SHA-256.
+
 ## 📚 Citation
 
-Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu, “Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception.” Accepted manuscript. The supplied PDF does not include the final publication venue, volume, pages, or DOI; please add those details from the publisher's version when available.
+Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu, “Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, accepted as a Regular Paper, manuscript TPAMI-2026-07-2953.R1. DOI and final bibliographic details are pending publication.
 
 ## 📄 License and third-party code
 

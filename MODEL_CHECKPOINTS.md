@@ -4,6 +4,13 @@ The files in `release-assets/checkpoints/` are local release assets and are
 excluded from ordinary Git commits. Each file is identified by SHA-256. Run
 evaluation only with the matching dataset and protocol.
 
+These checkpoints are historical artifacts, not the checkpoints behind the
+paper's Table IV. The archived NUDT and IRSTD-1K Ours runs used 350 epochs,
+while the manuscript specifies 300. Their records do not include a complete
+per-run source/config snapshot for every optimizer detail. The current
+documented training entrypoints use Adam to match the manuscript; do not claim
+that these older weights were produced by the current Adam configuration.
+
 | Dataset / model | Training and selection | Evaluation recorded | Checkpoint |
 |---|---|---|---|
 | NUDT-SIRST Ours, job 6754 | 350 epochs; batch 12; seed 2727; best internal-validation mIoU 94.7192 | One recorded official evaluation: mIoU 95.13, F1 97.50, nIoU 95.03, Pd 99.05, Fa 2.90 | `NUDT-SIRST_ours_job6754_legacy350.pth`; SHA-256 `30e1ec5841b961c0377792ad9c4932210557b8b8fbd419fe56506f1a911a452b` |
@@ -17,5 +24,7 @@ was still pending was incorrect.
 
 The NUDT and IRSTD-1K weights are completed legacy 350-epoch runs. They are not
 results from the later 300-epoch candidate grids. The SKY row uses the
-corrected official lists. No partial/interim SKY Ours checkpoint, old-split
-SKY checkpoint, or segmentation-only weight is included in this release.
+corrected official lists. The SKY artifact is a baseline, not Ours. No SKY
+Ours checkpoint or segmentation-only weight is included in this repository
+release; a separate local experiment archive contains an internal-validation
+SKY Ours candidate, which has not been included here as a paper-result weight.

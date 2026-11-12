@@ -133,7 +133,7 @@ class ImageFolder(Dataset):
             if self.istraining:
                 image, mask = self._sync_transform(image, mask)
             else:
-                eval_size = 480 if self.canonical == 'IRSTDID-SKY' else self.base_size
+                eval_size = self.base_size
                 image = image.resize((eval_size, eval_size), Image.Resampling.BILINEAR)
                 mask = mask.resize((eval_size, eval_size), Image.Resampling.NEAREST)
             image = self._normalized_tensor(image)

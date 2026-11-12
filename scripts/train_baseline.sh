@@ -7,13 +7,34 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 PYTHON="${PYTHON:-python}"
 DATASET="${DATASET:-NUDT-SIRST}"
-BATCH_SIZE="${BATCH_SIZE:-12}"
-IMAGE_SIZE="${IMAGE_SIZE:-256}"
+case "$DATASET" in
+  NUDT-SIRST)
+    DEFAULT_BATCH_SIZE=12
+    DEFAULT_IMAGE_SIZE=256
+    ;;
+  IRSTD-1K|IRSTD-1k)
+    DEFAULT_BATCH_SIZE=8
+    DEFAULT_IMAGE_SIZE=512
+    ;;
+  IRSTDID-SKY)
+    DEFAULT_BATCH_SIZE=8
+    DEFAULT_IMAGE_SIZE=512
+    ;;
+  *)
+    echo "Unsupported DATASET: $DATASET" >&2
+    exit 2
+    ;;
+esac
+BATCH_SIZE="${BATCH_SIZE:-$DEFAULT_BATCH_SIZE}"
+IMAGE_SIZE="${IMAGE_SIZE:-$DEFAULT_IMAGE_SIZE}"
 EPOCHS="${EPOCHS:-300}"
 LR="${LR:-0.01}"
 SEED="${SEED:-2727}"
 NUM_WORKERS="${NUM_WORKERS:-4}"
-SAVE_DIR="${SAVE_DIR:-$ROOT/outputs/baseline}"
+SAVE_DIR="${SAVE_DIR:-outputs/baseline}"
+if [[ "$SAVE_DIR" != /* ]]; then
+  SAVE_DIR="$ROOT/$SAVE_DIR"
+fi
 
 mkdir -p "$SAVE_DIR"
 cd "$ROOT"
