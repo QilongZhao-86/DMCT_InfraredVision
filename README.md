@@ -11,7 +11,7 @@
 
 **A data-model collaborative framework for robust infrared visual perception.**
 
-[Method](#method-overview) · [Results](#checkpoints) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
+[Method](#method-overview) · [Results](#paper-reported-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
 
 <img src="assets/framework_overview.png" alt="Overview of the data-model collaborative transfer framework" width="100%">
 
@@ -35,17 +35,18 @@ Infrared perception must handle imaging variations such as low contrast, blur, s
 
 The paper evaluates the framework on **infrared image enhancement, depth estimation, small-target detection, and semantic segmentation**.
 
-## 📊 Checkpoints
+## 📊 Paper-reported results
 
-The table below summarizes the completed checkpoint artifacts currently documented in this repository. These runs have their own training histories and protocols; they are not a substitute for the paper's full result tables. See [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) for checkpoint names, selection details, and SHA-256 hashes.
+The following values are transcribed from the paper's Table IV (the proposed method, “Ours”). They are manuscript results, not measurements of a checkpoint currently distributed with this repository.
 
-| Dataset | Model | Training record | Recorded evaluation |
-|:--|:--|:--|:--|
-| NUDT-SIRST | Ours | Legacy 350 epochs · batch 12 · seed 2727 | **mIoU 95.13** · F1 97.50 · nIoU 95.03 · Pd 99.05 · Fa 2.90 |
-| IRSTD-1K | Ours | Legacy 350 epochs · batch 8 · seed 2727 · best internal-validation mIoU 70.9068 | No official-test evaluation recorded |
-| IRSTDID-SKY | Baseline | 300 epochs · batch 8 · seed 2727 · canonical 342/60/98 split | **mIoU 68.66** · one recorded official evaluation |
+| Dataset | Method | mIoU ↑ | F1 ↑ | Pd ↑ | Fa ↓ (×10⁻⁴) |
+|:--|:--:|--:|--:|--:|--:|
+| NUDT-SIRST | **Ours** | **95.26** | **97.57** | **99.26** | **0.0064** |
+| IRSTD-1K | **Ours** | **66.40** | **79.81** | **92.26** | **0.2019** |
+| IRSTDID-SKY | **Ours** | **72.65** | **84.16** | **98.72** | **0.0079** |
+| Overall | **Ours** | **78.10** | **87.18** | **96.75** | **0.0743** |
 
-> **Protocol note:** The NUDT and IRSTD-1K checkpoints are legacy 350-epoch runs, not results from the later 300-epoch candidate grids. Incomplete runs and noncanonical SKY results are excluded. Do not compare results across different splits, training budgets, or checkpoint-selection protocols.
+> **Checkpoint status:** The final checkpoints corresponding to these paper results have not yet been supplied for this release. They will be added with their matching protocol details and SHA-256 hashes when available. The separate [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) file documents earlier archived runs; those weights and metrics are not the source of the table above.
 
 This release contains the small-target detection code and artifacts. It does not yet include complete implementations and artifacts for all four task instantiations described in the manuscript. Dataset images and masks are not included.
 
