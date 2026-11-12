@@ -59,7 +59,7 @@ The final manuscript also reports semantic segmentation on FMB using DINOv2, wit
 | Moderate stripe noise | **Ours** | **50.93** |
 | Severe stripe noise | **Ours** | **50.56** |
 
-This repository release does not include the complete FMB segmentation implementation, its trained checkpoint, or the data. The table records manuscript results only.
+The linked weights Release includes archived FMB segmentation checkpoints for inspection, but not the complete segmentation implementation or dataset. The table above records manuscript results only; the archived checkpoints are historical artifacts and are not asserted to reproduce those values.
 
 ## 🧪 Small-target detection configuration
 
@@ -77,7 +77,7 @@ The detector's lower and upper bilevel parameter groups use Adam in this release
 
 Other implementation-specific hyperparameters (including noise-generator scaling and save cadence) are not specified in the manuscript. The launch scripts accept explicit overrides for these values; their defaults are implementation choices, not paper-reported settings.
 
-This release contains the small-target detection code and artifacts. It does not yet include complete implementations and artifacts for all four task instantiations described in the manuscript. Dataset images and masks are not included.
+This repository contains the small-target detection implementation. The linked [weights Release](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12) provides archived Ours-labelled detector and FMB segmentation checkpoints with manifests and provenance notes. It does not provide complete implementations and artifacts for all four task instantiations described in the manuscript. Dataset images and masks are not included.
 
 ## 🧰 Contents
 

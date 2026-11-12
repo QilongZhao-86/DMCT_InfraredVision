@@ -4,6 +4,14 @@ The files in `release-assets/checkpoints/` are local release assets and are
 excluded from ordinary Git commits. Each file is identified by SHA-256. Run
 evaluation only with the matching dataset and protocol.
 
+Additional Ours-labelled archives are published under the GitHub Release
+[`ours-checkpoints-2026-11-12`](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12).
+That release contains historical candidate runs, SKY internal-validation
+snapshots, paper-named checkpoint archives, and FMB segmentation weights. Its
+per-file manifest and the SHA-256 of each release asset are included with the
+release files. The artifacts are provided for preservation and inspection;
+they are not all final-paper checkpoints.
+
 These checkpoints are historical artifacts, not the checkpoints behind the
 paper's Table IV. The archived NUDT and IRSTD-1K Ours runs used 350 epochs,
 while the manuscript specifies 300. Their records do not include a complete
@@ -22,9 +30,14 @@ the checkpoint loaded with zero missing/unexpected keys, evaluated 664,000 PR
 samples, and printed the metrics above. The earlier note saying that evaluation
 was still pending was incorrect.
 
-The NUDT and IRSTD-1K weights are completed legacy 350-epoch runs. They are not
-results from the later 300-epoch candidate grids. The SKY row uses the
-corrected official lists. The SKY artifact is a baseline, not Ours. No SKY
-Ours checkpoint or segmentation-only weight is included in this repository
-release; a separate local experiment archive contains an internal-validation
-SKY Ours candidate, which has not been included here as a paper-result weight.
+The NUDT and IRSTD-1K weights listed above are completed legacy 350-epoch runs.
+They are not results from the later 300-epoch candidate grids. The SKY row uses
+the corrected official lists and is a baseline, not Ours. SKY Ours candidates
+and internal-validation snapshots are available in the separate weights
+Release linked above; they are not official-test-selected paper-result weights.
+
+The repository's paper-named checkpoint archives are also included as
+historical files in that Release. Their provenance is not fully reconciled with
+the accepted manuscript: archived evaluations differ from some Table IV
+values. Do not treat their filenames as proof that they generated the paper
+results. The release notes and per-weight manifest preserve this caveat.
