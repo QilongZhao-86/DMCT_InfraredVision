@@ -1,57 +1,140 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" role="img" aria-labelledby="title desc">
-  <title id="title">Thermal infrared perception</title>
-  <desc id="desc">Abstract thermal field and target reticle in a dark blue and cyan visual style.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-labelledby="title desc">
+  <title id="title">DMCT thermal frequency-guided adapter</title>
+  <desc id="desc">A thermal image is separated into low-frequency structure and high-frequency residual cues. Their centered low-pass and outer high-pass Fourier bands condition an adapter, whose residual update is added to visual features.</desc>
   <defs>
-    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#071321"/>
       <stop offset="0.55" stop-color="#0b1c32"/>
-      <stop offset="1" stop-color="#10152c"/>
+      <stop offset="1" stop-color="#11152b"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#22d3ee"/>
       <stop offset="0.52" stop-color="#818cf8"/>
       <stop offset="1" stop-color="#fb7185"/>
     </linearGradient>
-    <radialGradient id="heat" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#fff7ad" stop-opacity="0.98"/>
-      <stop offset="0.24" stop-color="#fb7185" stop-opacity="0.88"/>
-      <stop offset="0.58" stop-color="#a855f7" stop-opacity="0.48"/>
+    <linearGradient id="lowFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="0.52" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#fb7185" stop-opacity="0.34"/>
       <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="cool" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
-    </radialGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#67e8f9"/>
+    </marker>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#9cc8ff" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="1440" height="360" rx="28" fill="url(#background)"/>
-  <g stroke="#9cc8ff" stroke-opacity="0.09" stroke-width="1">
-    <path d="M0 72H1440M0 144H1440M0 216H1440M0 288H1440"/>
-    <path d="M72 0V360M144 0V360M216 0V360M288 0V360M360 0V360M432 0V360M504 0V360M576 0V360M648 0V360M720 0V360M792 0V360M864 0V360M936 0V360M1008 0V360M1080 0V360M1152 0V360M1224 0V360M1296 0V360M1368 0V360"/>
-  </g>
-  <ellipse cx="342" cy="188" rx="295" ry="194" fill="url(#cool)"/>
-  <ellipse cx="1110" cy="178" rx="292" ry="210" fill="url(#heat)" opacity="0.72"/>
-  <g fill="none" stroke="url(#accent)" stroke-opacity="0.48" stroke-width="2">
-    <path d="M75 219c52-68 104-78 159-34 44 35 72 36 111 2 53-46 99-42 143 9 38 44 76 50 119 18"/>
-    <path d="M67 242c64-74 124-86 182-39 41 33 75 38 118 4 55-43 102-40 147 10 41 46 79 52 126 17"/>
-    <path d="M93 267c53-49 98-56 143-22 46 35 90 41 139 7 46-32 83-28 119 11 31 33 66 40 107 19"/>
-  </g>
-  <g fill="none" stroke="#d8f7ff" stroke-opacity="0.72">
-    <circle cx="1108" cy="178" r="96" stroke-width="1.5"/>
-    <circle cx="1108" cy="178" r="66" stroke-width="1" stroke-dasharray="4 8"/>
-    <circle cx="1108" cy="178" r="34" stroke-width="1.5"/>
-    <path d="M1108 62v35M1108 259v35M992 178h35M1189 178h35" stroke-width="2"/>
-    <path d="M1031 101l22 22M1163 233l22 22M1185 101l-22 22M1053 233l-22 22" stroke-width="1.5"/>
-  </g>
-  <circle cx="1108" cy="178" r="13" fill="#fff7ad"/>
-  <circle cx="1108" cy="178" r="5" fill="#ffffff"/>
-  <path d="M565 178h390" stroke="url(#accent)" stroke-opacity="0.6" stroke-width="2"/>
-  <path d="M924 168l18 10-18 10" fill="none" stroke="#d8f7ff" stroke-opacity="0.8" stroke-width="2"/>
+
+  <rect width="1600" height="480" rx="30" fill="url(#bg)"/>
+  <rect width="1600" height="480" rx="30" fill="url(#grid)"/>
+  <rect x="0" y="0" width="8" height="480" rx="4" fill="url(#accent)"/>
+  <ellipse cx="1120" cy="240" rx="610" ry="280" fill="url(#glow)"/>
+
+  <!-- Quiet title panel: kept clear of the method illustration. -->
   <g font-family="Segoe UI, Arial, sans-serif">
-    <text x="82" y="92" fill="#67e8f9" font-size="15" font-weight="700" letter-spacing="4">THERMAL SIGNAL  /  MODEL TRANSFER</text>
-    <text x="78" y="160" fill="#f8fafc" font-size="62" font-weight="750" letter-spacing="2">DMCT</text>
-    <text x="83" y="191" fill="#cbd5e1" font-size="17" letter-spacing="2">DATA × MODEL COLLABORATIVE TRANSFER</text>
-    <text x="83" y="316" fill="#94a3b8" font-size="13" letter-spacing="2">STRUCTURE  ·  DETAIL  ·  ADAPTATION</text>
-    <text x="1280" y="316" text-anchor="end" fill="#c4b5fd" font-size="12" letter-spacing="2">INFRARED PERCEPTION</text>
+    <text x="62" y="168" fill="#f8fafc" font-size="74" font-weight="800" letter-spacing="3">DMCT</text>
+    <path d="M66 197H278" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+    <text x="64" y="249" fill="#cbd5e1" font-size="25" font-weight="650" letter-spacing="1.2">THERMAL</text>
+    <text x="64" y="286" fill="#cbd5e1" font-size="25" font-weight="650" letter-spacing="1.2">FREQUENCY</text>
+    <text x="64" y="323" fill="#cbd5e1" font-size="25" font-weight="650" letter-spacing="1.2">ADAPTATION</text>
   </g>
-  <rect x="0" y="0" width="1440" height="4" rx="2" fill="url(#accent)"/>
+  <path d="M340 64V416" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Thermal input map. -->
+  <g transform="translate(382 145)">
+    <rect width="132" height="132" rx="18" fill="#0d2038" stroke="#67e8f9" stroke-opacity="0.72" stroke-width="2"/>
+    <rect x="10" y="10" width="112" height="112" rx="12" fill="#101b36"/>
+    <ellipse cx="66" cy="70" rx="39" ry="31" fill="url(#lowFill)" opacity="0.95" filter="url(#softGlow)"/>
+    <path d="M27 74c8-22 21-31 39-29 16 2 24 14 39 12M31 86c11-14 23-20 38-17 13 3 22 10 32 8" fill="none" stroke="#fde68a" stroke-opacity="0.8" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="74" cy="58" r="6" fill="#fff7ad"/>
+    <path d="M74 34V48M74 68V82M50 58H64M84 58H98" stroke="#fff7ad" stroke-width="2"/>
+  </g>
+  <text x="448" y="316" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="750" text-anchor="middle" letter-spacing="1">IMAGE</text>
+
+  <!-- Guided low/high decomposition. -->
+  <path d="M522 210H565" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(584 110)">
+    <rect width="172" height="250" rx="20" fill="#101d34" stroke="#818cf8" stroke-opacity="0.72" stroke-width="2"/>
+    <path d="M22 125H150" stroke="#94a3b8" stroke-opacity="0.42" stroke-width="2"/>
+    <circle cx="86" cy="62" r="36" fill="url(#lowFill)" opacity="0.78"/>
+    <ellipse cx="86" cy="62" rx="25" ry="18" fill="#fde68a" opacity="0.9"/>
+    <path d="M55 63c9-11 19-16 31-15 11 1 18 8 31 7" fill="none" stroke="#fff7ad" stroke-width="3" stroke-linecap="round"/>
+    <g fill="#67e8f9">
+      <circle cx="49" cy="190" r="4"/><circle cx="66" cy="205" r="3"/><circle cx="84" cy="180" r="4"/>
+      <circle cx="104" cy="214" r="3"/><circle cx="126" cy="187" r="4"/><circle cx="143" cy="204" r="3"/>
+      <circle cx="57" cy="224" r="3"/><circle cx="91" cy="232" r="4"/><circle cx="120" cy="230" r="3"/>
+    </g>
+    <path d="M48 181l96 56M53 238l91-58" stroke="#22d3ee" stroke-opacity="0.3" stroke-width="2"/>
+  </g>
+  <text x="670" y="399" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="750" text-anchor="middle" letter-spacing="1">GUIDED SPLIT</text>
+
+  <!-- Each cue is filtered in Fourier space: centered low-pass vs outer high-pass. -->
+  <path d="M761 178C790 178 792 145 817 145" fill="none" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M761 292C790 292 792 355 817 355" fill="none" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(834 70)">
+    <rect width="150" height="150" rx="18" fill="#071322" stroke="#c4b5fd" stroke-opacity="0.8" stroke-width="2"/>
+    <path d="M24 24H126V126H24Z" fill="#111c33" stroke="#64748b" stroke-opacity="0.65"/>
+    <g fill="#8b5cf6" opacity="0.7">
+      <circle cx="46" cy="46" r="3"/><circle cx="104" cy="45" r="3"/><circle cx="45" cy="104" r="3"/><circle cx="105" cy="105" r="3"/>
+      <circle cx="75" cy="37" r="2"/><circle cx="112" cy="74" r="2"/><circle cx="38" cy="77" r="2"/><circle cx="76" cy="114" r="2"/>
+    </g>
+    <rect x="57" y="57" width="36" height="36" rx="5" fill="#fde68a"/>
+    <rect x="50" y="50" width="50" height="50" rx="7" fill="none" stroke="#fb7185" stroke-width="2"/>
+  </g>
+  <text x="909" y="255" fill="#e9d5ff" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="1">LOW FFT</text>
+
+  <g transform="translate(834 280)">
+    <rect width="150" height="150" rx="18" fill="#071322" stroke="#67e8f9" stroke-opacity="0.8" stroke-width="2"/>
+    <path d="M24 24H126V126H24Z" fill="#111c33" stroke="#64748b" stroke-opacity="0.65"/>
+    <g fill="#22d3ee">
+      <circle cx="35" cy="35" r="4"/><circle cx="56" cy="31" r="3"/><circle cx="79" cy="36" r="4"/><circle cx="103" cy="32" r="3"/><circle cx="119" cy="48" r="4"/>
+      <circle cx="33" cy="63" r="3"/><circle cx="116" cy="76" r="4"/><circle cx="35" cy="98" r="4"/><circle cx="57" cy="118" r="3"/><circle cx="82" cy="115" r="4"/>
+      <circle cx="108" cy="113" r="3"/><circle cx="120" cy="96" r="4"/><circle cx="69" cy="25" r="2"/><circle cx="25" cy="80" r="2"/>
+    </g>
+    <rect x="52" y="52" width="46" height="46" rx="6" fill="#071322" stroke="#fb7185" stroke-opacity="0.45" stroke-dasharray="4 5"/>
+  </g>
+  <text x="909" y="465" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="1">HIGH FFT</text>
+
+  <!-- Frequency-conditioned adapter and residual feature update. -->
+  <path d="M991 145H1028V216H1051" fill="none" stroke="#a78bfa" stroke-width="3"/>
+  <path d="M991 355H1028V286H1051" fill="none" stroke="#22d3ee" stroke-width="3"/>
+  <g transform="translate(1054 185)">
+    <rect width="166" height="132" rx="22" fill="#182642" stroke="url(#accent)" stroke-width="3"/>
+    <path d="M29 39H137M29 66H137M29 93H137" stroke="#94a3b8" stroke-opacity="0.38" stroke-width="2"/>
+    <circle cx="46" cy="39" r="8" fill="#c4b5fd"/><circle cx="119" cy="66" r="8" fill="#67e8f9"/><circle cx="70" cy="93" r="8" fill="#fb7185"/>
+    <path d="M54 39L109 66L77 93M54 39L112 66" fill="none" stroke="#e0f2fe" stroke-opacity="0.72" stroke-width="2"/>
+  </g>
+  <text x="1137" y="354" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="800" text-anchor="middle" letter-spacing="1">ADAPTER</text>
+
+  <!-- Frozen visual feature enters the adapter and bypasses it for residual addition. -->
+  <g transform="translate(1262 185)">
+    <rect width="114" height="146" rx="18" fill="#10243a" stroke="#67e8f9" stroke-opacity="0.72" stroke-width="2"/>
+    <path d="M26 35H88M26 54H88M26 73H88M26 92H88M26 111H88" stroke="#93c5fd" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
+    <path d="M36 29V118M57 29V118M78 29V118" stroke="#818cf8" stroke-opacity="0.27" stroke-width="2"/>
+  </g>
+  <path d="M1262 260H1223" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1319" y="362" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="750" text-anchor="middle" letter-spacing="1">FEATURE</text>
+
+  <path d="M1376 235H1394" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1220 293V133H1410V220" fill="none" stroke="#c4b5fd" stroke-width="3" marker-end="url(#arrow)"/>
+  <circle cx="1410" cy="250" r="24" fill="#14233b" stroke="#e0e7ff" stroke-opacity="0.8" stroke-width="2"/>
+  <text x="1410" y="261" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle">+</text>
+  <path d="M1434 250H1451" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(1451 188)">
+    <rect width="112" height="126" rx="18" fill="#15243b" stroke="#fb7185" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="56" cy="63" r="34" fill="none" stroke="#c4b5fd" stroke-width="3"/>
+    <circle cx="56" cy="63" r="18" fill="none" stroke="#67e8f9" stroke-width="3"/>
+    <circle cx="56" cy="63" r="6" fill="#fde68a"/>
+    <path d="M56 17V39M56 87V109M10 63H32M80 63H102" stroke="#e0f2fe" stroke-width="2"/>
+  </g>
+  <text x="1507" y="354" fill="#fecdd3" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="750" text-anchor="middle" letter-spacing="1">OUTPUT</text>
+
+  <rect x="0" y="0" width="1600" height="5" rx="2" fill="url(#accent)"/>
 </svg>
