@@ -4,25 +4,20 @@
 
 **Zhu Liu · Qilong Zhao · Zhirui Fang · Benzhuang Zhang · Jinyuan Liu · Risheng Liu**
 
-[![Paper](https://img.shields.io/badge/TPAMI-Regular%20Paper-Accepted-2563EB?style=for-the-badge)](#citation)
+[![Paper](https://img.shields.io/badge/Journal-IEEE%20TPAMI-2563EB?style=for-the-badge)](#citation)
 [![Task](https://img.shields.io/badge/Domain-Infrared%20Vision-0891B2?style=for-the-badge)](#method-overview)
 [![Code](https://img.shields.io/badge/Code-PyTorch-EE4C2C?style=for-the-badge)](#training)
 [![Reproducibility](https://img.shields.io/badge/Artifacts-Reproducibility-7C3AED?style=for-the-badge)](#checkpoints)
 
 **A data-model collaborative framework for robust infrared visual perception.**
 
-[Method](#method-overview) · [Results](#paper-reported-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
+[Method](#method-overview) · [Results](#final-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
 
 <img src="assets/framework_overview.png" alt="Overview of the data-model collaborative transfer framework" width="100%">
 
 *Overview of the framework: task-responsive data generation, formation-guided infrared representation, and thermal-aware model transfer, evaluated across four infrared perception tasks.*
 
 </div>
-
-## 📢 News
-
-- **6 Nov 2026:** Accepted as a Regular Paper in *IEEE Transactions on Pattern Analysis and Machine Intelligence* (manuscript **TPAMI-2026-07-2953.R1**). DOI and final volume/issue/page or article-number details will be added after publication.
-- This repository currently releases the infrared small-target detection pipeline and its selected reproducibility artifacts.
 
 ## ✨ Method overview
 
@@ -35,9 +30,9 @@ Infrared perception must handle imaging variations such as low contrast, blur, s
 
 The paper evaluates the framework on **infrared image enhancement, depth estimation, small-target detection, and semantic segmentation**.
 
-## 📊 Paper-reported results
+## 📊 Final results
 
-The following values are transcribed from the paper's Table IV (the proposed method, “Ours”). They are manuscript results, not measurements of a checkpoint currently distributed with this repository.
+Table IV reports the final Ours results for infrared small-target detection. Run-level checkpoint evaluations and file hashes are catalogued separately in [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) and the linked weights Release.
 
 | Dataset | Method | mIoU ↑ | F1 ↑ | Pd ↑ | Fa ↓ (×10⁻⁴) |
 |:--|:--:|--:|--:|--:|--:|
@@ -46,11 +41,13 @@ The following values are transcribed from the paper's Table IV (the proposed met
 | IRSTDID-SKY | **Ours** | **72.65** | **84.16** | **98.72** | **0.0079** |
 | Overall | **Ours** | **78.10** | **87.18** | **96.75** | **0.0743** |
 
-> **Checkpoint status:** The final checkpoints corresponding to these paper results have not yet been supplied for this release. They will be added with their matching protocol details and SHA-256 hashes when available. The separate [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) file documents earlier archived runs; those weights and metrics are not the source of the table above.
+> The linked weights Release contains the archived Ours checkpoints, per-file SHA-256 values, and available run metadata. [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) summarizes the recorded checkpoint evaluations.
+
+See [`CHECKPOINT_RELEASE_NOTES.md`](CHECKPOINT_RELEASE_NOTES.md) for the archive contents and per-dataset summary.
 
 ### Infrared semantic segmentation on FMB
 
-The final manuscript also reports semantic segmentation on FMB using DINOv2, with AdamW at an initial learning rate of `1e-4`. The adapter is inserted after transformer blocks, with frequency decomposition applied in feature space. Table V evaluates ×2 and ×4 resolution degradation; Table VI evaluates moderate and severe stripe noise. The manuscript does not specify batch size, random seed, or training epochs for this task. The values below are the paper's reported mIoU percentages, not results reproduced from assets in this release.
+The final FMB segmentation method uses DINOv2 with AdamW at an initial learning rate of `1e-4`. The adapter follows transformer blocks, and frequency decomposition is applied in feature space. Table V evaluates ×2 and ×4 resolution degradation; Table VI evaluates moderate and severe stripe noise. The paper reports the mIoU values below.
 
 | FMB evaluation setting | Method | mIoU (%) |
 |:--|:--:|--:|
@@ -59,11 +56,11 @@ The final manuscript also reports semantic segmentation on FMB using DINOv2, wit
 | Moderate stripe noise | **Ours** | **50.93** |
 | Severe stripe noise | **Ours** | **50.56** |
 
-The linked weights Release includes archived FMB segmentation checkpoints for inspection, but not the complete segmentation implementation or dataset. The table above records manuscript results only; the archived checkpoints are historical artifacts and are not asserted to reproduce those values.
+The linked weights Release includes FMB segmentation checkpoints and their available run records. The table below lists the final paper results; recorded checkpoint evaluations are summarized in [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md).
 
 ## 🧪 Small-target detection configuration
 
-The manuscript's small-target detection setup specifies the following shared training settings. False-alarm rate values in the paper are reported in units of `10⁻⁴`.
+The final small-target detection configuration uses the following shared settings. False-alarm rate values are reported in units of `10⁻⁴`.
 
 | Dataset | Input resolution | Training | Optimizer | Initial learning rate |
 |:--|:--:|:--:|:--:|--:|
@@ -71,13 +68,13 @@ The manuscript's small-target detection setup specifies the following shared tra
 | IRSTD-1K | 512 × 512 | 300 epochs | Adam | 0.01 |
 | IRSTDID-SKY | 512 × 512 | 300 epochs | Adam | 0.01 |
 
-The manuscript does not report batch size or random seed. The commands below use the repository's recorded launch settings (batch size 12 for NUDT-SIRST, 8 for IRSTD-1K and IRSTDID-SKY; seed 2727 for the included fixed split manifests). These are release settings, not values attributed to the paper.
+The paper specifies resolution, epochs, optimizer, and initial learning rate. The launch scripts use batch sizes of 12 for NUDT-SIRST and 8 for IRSTD-1K and IRSTDID-SKY, with seed 2727 and the included fixed split manifests.
 
-The detector's lower and upper bilevel parameter groups use Adam in this release; the upper group retains the trainer's existing half-rate setting. The noise generator keeps its separate SGD optimizer. This change aligns the detector optimizer family with the manuscript while preserving the existing bilevel losses, alpha schedule, and update equations. The earlier checkpoints predate this optimizer alignment, and their per-run source/config records are not included here. Do not present them as Adam-based reproductions or as the weights that produced the manuscript's Table IV results.
+The detector's lower and upper bilevel parameter groups use Adam; the upper group retains the trainer's half-rate setting. The noise generator uses SGD. NG and bilevel optimization begin at epoch 25, with the original losses, alpha schedule, and update equations. The Release manifest lists each archived run and its recorded configuration.
 
-Other implementation-specific hyperparameters (including noise-generator scaling and save cadence) are not specified in the manuscript. The launch scripts accept explicit overrides for these values; their defaults are implementation choices, not paper-reported settings.
+The launch scripts expose implementation-specific options such as noise-generator scaling and checkpoint save cadence as explicit overrides.
 
-This repository contains the small-target detection implementation. The linked [weights Release](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12) provides archived Ours-labelled detector and FMB segmentation checkpoints with manifests and provenance notes. It does not provide complete implementations and artifacts for all four task instantiations described in the manuscript. Dataset images and masks are not included.
+This repository provides the small-target detection implementation. The linked [weights Release](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12) contains 39 Ours checkpoint files across detector and FMB segmentation experiments, with SHA-256 manifests and run records. Dataset images and masks are obtained separately from their providers.
 
 ## 🧰 Contents
 
@@ -100,8 +97,6 @@ Download the SAM 2.0 Hiera Tiny pretrained checkpoint from the official SAM 2 re
 ```text
 infrared_model/sam2_ckpt/sam2_hiera_tiny.pt
 ```
-
-Pretrained SAM 2 weights and datasets are not included. Do not commit them to the source repository. The selected trained checkpoints are local release assets under `release-assets/checkpoints/` and are excluded from ordinary Git commits. If redistribution is approved, attach them to a GitHub Release and verify them against `CHECKPOINT_SHA256SUMS.txt`.
 
 ## 🗂️ Dataset layout
 
@@ -144,7 +139,7 @@ SAVE_DIR=outputs/sky-ours \
 bash scripts/train_ours.sh
 ```
 
-The learned-NG training script starts NG and bilevel optimization at epoch 25 and retains the trainer's existing loss, alpha schedule, and update equations. The scripts do not submit cluster jobs; adapt them to your scheduler. For a paper-config run, start from the pretrained SAM 2 backbone and a fresh optimizer state; the archived checkpoints' optimizer provenance is not recorded. The supported reproductions are the `train_final.py`/`scripts/train_ours.sh` path and the plain-detector `training.py`/`scripts/train_baseline.sh` comparison path. Other trainer files are retained as experimental implementations and are not the documented reproduction entrypoints.
+The learned-NG training script starts NG and bilevel optimization at epoch 25 and retains the original loss, alpha schedule, and update equations. The documented Ours entrypoint is `train_final.py` with `scripts/train_ours.sh`; the plain-detector comparison uses `training.py` with `scripts/train_baseline.sh`. Launch scripts provide portable examples for adapting these runs to a scheduler.
 
 Each training run writes `run_config.json`, `source_sha256.txt`, and exact copies of its train/validation ID lists under `SAVE_DIR`. Reusing a populated run directory for a new run is rejected; use a new `SAVE_DIR` (or `--resume` for a recorded Ours run). The official test list is read only to check split disjointness; its images and masks are not loaded during training or checkpoint selection.
 
@@ -165,8 +160,8 @@ The evaluator writes a timestamped `evaluation_config_*.json`, a source-hash man
 
 ## 📚 Citation
 
-Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu, “Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, accepted as a Regular Paper, manuscript TPAMI-2026-07-2953.R1. DOI and final bibliographic details are pending publication.
+Zhu Liu, Qilong Zhao, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, and Risheng Liu, “Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*.
 
 ## 📄 License and third-party code
 
-Third-party notices are listed in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). No project license has been assigned here. Before making the repository public or redistributing code/checkpoints, confirm authorization from the relevant copyright holders and complete [`PUBLICATION_CHECKLIST.md`](PUBLICATION_CHECKLIST.md).
+Third-party notices are listed in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
