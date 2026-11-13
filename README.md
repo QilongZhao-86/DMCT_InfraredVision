@@ -8,14 +8,13 @@
 [![Task](https://img.shields.io/badge/Domain-Infrared%20Vision-0891B2?style=for-the-badge)](#method-overview)
 [![Code](https://img.shields.io/badge/Code-PyTorch-EE4C2C?style=for-the-badge)](#training)
 [![Reproducibility](https://img.shields.io/badge/Artifacts-Reproducibility-7C3AED?style=for-the-badge)](#checkpoints)
+[![Weights](https://img.shields.io/badge/Weights-39%20checkpoints-DB2777?style=for-the-badge)](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12)
 
 **A data-model collaborative framework for robust infrared visual perception.**
 
 [Method](#method-overview) · [Results](#final-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
 
-<img src="assets/framework_overview.png" alt="Overview of the data-model collaborative transfer framework" width="100%">
-
-*Overview of the framework: task-responsive data generation, formation-guided infrared representation, and thermal-aware model transfer, evaluated across four infrared perception tasks.*
+<img src="assets/thermal_banner.svg" alt="Thermal infrared field and target reticle in the DMCT visual theme" width="100%">
 
 </div>
 
@@ -30,16 +29,33 @@ Infrared perception must handle imaging variations such as low contrast, blur, s
 
 The paper evaluates the framework on **infrared image enhancement, depth estimation, small-target detection, and semantic segmentation**.
 
+<p align="center">
+  <img src="assets/framework_overview.png" alt="Overview of the data-model collaborative transfer framework" width="96%">
+</p>
+<p align="center"><sub>Task-responsive data generation · formation-guided representation · thermal-aware transfer</sub></p>
+
 ## 📊 Final results
 
 Table IV reports the final Ours results for infrared small-target detection. Run-level checkpoint evaluations and file hashes are catalogued separately in [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) and the linked weights Release.
 
-| Dataset | Method | mIoU ↑ | F1 ↑ | Pd ↑ | Fa ↓ (×10⁻⁶) |
-|:--|:--:|--:|--:|--:|--:|
-| NUDT-SIRST | **Ours** | **95.26** | **97.57** | **99.26** | **0.64** |
-| IRSTD-1K | **Ours** | **66.40** | **79.81** | **92.26** | **20.19** |
-| IRSTDID-SKY | **Ours** | **72.65** | **84.16** | **98.72** | **0.79** |
-| Overall | **Ours** | **78.10** | **87.18** | **96.75** | **7.43** |
+<table align="center">
+  <thead>
+    <tr>
+      <th align="center">NUDT-SIRST</th>
+      <th align="center">IRSTD-1K</th>
+      <th align="center">IRSTDID-SKY</th>
+      <th align="center">Overall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><strong>95.26</strong> mIoU<br>F1 97.57 · Pd 99.26<br>Fa 0.64 ×10⁻⁶</td>
+      <td align="center"><strong>66.40</strong> mIoU<br>F1 79.81 · Pd 92.26<br>Fa 20.19 ×10⁻⁶</td>
+      <td align="center"><strong>72.65</strong> mIoU<br>F1 84.16 · Pd 98.72<br>Fa 0.79 ×10⁻⁶</td>
+      <td align="center"><strong>78.10</strong> mIoU<br>F1 87.18 · Pd 96.75<br>Fa 7.43 ×10⁻⁶</td>
+    </tr>
+  </tbody>
+</table>
 
 > The linked weights Release contains the archived Ours checkpoints, per-file SHA-256 values, and available run metadata. [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) summarizes the recorded checkpoint evaluations.
 

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" role="img" aria-labelledby="title desc">
+  <title id="title">Thermal infrared perception</title>
+  <desc id="desc">Abstract thermal field and target reticle in a dark blue and cyan visual style.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071321"/>
+      <stop offset="0.55" stop-color="#0b1c32"/>
+      <stop offset="1" stop-color="#10152c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.52" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </linearGradient>
+    <radialGradient id="heat" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff7ad" stop-opacity="0.98"/>
+      <stop offset="0.24" stop-color="#fb7185" stop-opacity="0.88"/>
+      <stop offset="0.58" stop-color="#a855f7" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cool" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="360" rx="28" fill="url(#background)"/>
+  <g stroke="#9cc8ff" stroke-opacity="0.09" stroke-width="1">
+    <path d="M0 72H1440M0 144H1440M0 216H1440M0 288H1440"/>
+    <path d="M72 0V360M144 0V360M216 0V360M288 0V360M360 0V360M432 0V360M504 0V360M576 0V360M648 0V360M720 0V360M792 0V360M864 0V360M936 0V360M1008 0V360M1080 0V360M1152 0V360M1224 0V360M1296 0V360M1368 0V360"/>
+  </g>
+  <ellipse cx="342" cy="188" rx="295" ry="194" fill="url(#cool)"/>
+  <ellipse cx="1110" cy="178" rx="292" ry="210" fill="url(#heat)" opacity="0.72"/>
+  <g fill="none" stroke="url(#accent)" stroke-opacity="0.48" stroke-width="2">
+    <path d="M75 219c52-68 104-78 159-34 44 35 72 36 111 2 53-46 99-42 143 9 38 44 76 50 119 18"/>
+    <path d="M67 242c64-74 124-86 182-39 41 33 75 38 118 4 55-43 102-40 147 10 41 46 79 52 126 17"/>
+    <path d="M93 267c53-49 98-56 143-22 46 35 90 41 139 7 46-32 83-28 119 11 31 33 66 40 107 19"/>
+  </g>
+  <g fill="none" stroke="#d8f7ff" stroke-opacity="0.72">
+    <circle cx="1108" cy="178" r="96" stroke-width="1.5"/>
+    <circle cx="1108" cy="178" r="66" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="1108" cy="178" r="34" stroke-width="1.5"/>
+    <path d="M1108 62v35M1108 259v35M992 178h35M1189 178h35" stroke-width="2"/>
+    <path d="M1031 101l22 22M1163 233l22 22M1185 101l-22 22M1053 233l-22 22" stroke-width="1.5"/>
+  </g>
+  <circle cx="1108" cy="178" r="13" fill="#fff7ad"/>
+  <circle cx="1108" cy="178" r="5" fill="#ffffff"/>
+  <path d="M565 178h390" stroke="url(#accent)" stroke-opacity="0.6" stroke-width="2"/>
+  <path d="M924 168l18 10-18 10" fill="none" stroke="#d8f7ff" stroke-opacity="0.8" stroke-width="2"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="82" y="92" fill="#67e8f9" font-size="15" font-weight="700" letter-spacing="4">THERMAL SIGNAL  /  MODEL TRANSFER</text>
+    <text x="78" y="160" fill="#f8fafc" font-size="62" font-weight="750" letter-spacing="2">DMCT</text>
+    <text x="83" y="191" fill="#cbd5e1" font-size="17" letter-spacing="2">DATA × MODEL COLLABORATIVE TRANSFER</text>
+    <text x="83" y="316" fill="#94a3b8" font-size="13" letter-spacing="2">STRUCTURE  ·  DETAIL  ·  ADAPTATION</text>
+    <text x="1280" y="316" text-anchor="end" fill="#c4b5fd" font-size="12" letter-spacing="2">INFRARED PERCEPTION</text>
+  </g>
+  <rect x="0" y="0" width="1440" height="4" rx="2" fill="url(#accent)"/>
+</svg>
