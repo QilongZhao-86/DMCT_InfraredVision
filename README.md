@@ -8,7 +8,6 @@
 [![Task](https://img.shields.io/badge/Domain-Infrared%20Vision-0891B2?style=for-the-badge)](#method-overview)
 [![Code](https://img.shields.io/badge/Code-PyTorch-EE4C2C?style=for-the-badge)](#training)
 [![Reproducibility](https://img.shields.io/badge/Artifacts-Reproducibility-7C3AED?style=for-the-badge)](#checkpoints)
-[![Weights](https://img.shields.io/badge/Weights-39%20checkpoints-DB2777?style=for-the-badge)](https://github.com/QilongZhao-86/DMCT_InfraredVision/releases/tag/ours-checkpoints-2026-11-12)
 
 **A data-model collaborative framework for robust infrared visual perception.**
 
