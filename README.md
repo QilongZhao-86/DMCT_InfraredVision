@@ -13,7 +13,7 @@
 
 [Method](#method-overview) · [Results](#final-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
 
-<img src="assets/thermal_banner.svg" alt="Thermal infrared field and target reticle in the DMCT visual theme" width="100%">
+<img src="assets/thermal_banner.svg" alt="DMCT learned low- and high-frequency decomposition of a thermal image" width="100%">
 
 </div>
 
