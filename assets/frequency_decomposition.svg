@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360" role="img" aria-labelledby="title desc">
+  <title id="title">DMCT learned low-high frequency decomposition</title>
+  <desc id="desc">A thermal image is separated into low-frequency structure and high-frequency detail, then mapped by learned low- and high-frequency projections.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071321"/>
+      <stop offset="0.58" stop-color="#0b1c32"/>
+      <stop offset="1" stop-color="#11152b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.52" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="0.5" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="60%" cy="45%" r="65%">
+      <stop offset="0" stop-color="#818cf8" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#67e8f9"/>
+    </marker>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#9cc8ff" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1440" height="360" rx="28" fill="url(#bg)"/>
+  <rect width="1440" height="360" rx="28" fill="url(#grid)"/>
+  <rect width="7" height="360" rx="3" fill="url(#accent)"/>
+  <ellipse cx="1010" cy="180" rx="470" ry="255" fill="url(#halo)"/>
+
+  <!-- Title area is kept apart from the diagram. -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="58" y="143" fill="#f8fafc" font-size="66" font-weight="800" letter-spacing="2">DMCT</text>
+    <path d="M62 168H258" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+    <text x="60" y="219" fill="#cbd5e1" font-size="23" font-weight="750" letter-spacing="1">LEARNED</text>
+    <text x="60" y="254" fill="#cbd5e1" font-size="23" font-weight="750" letter-spacing="1">FREQUENCY</text>
+    <text x="60" y="289" fill="#cbd5e1" font-size="23" font-weight="750" letter-spacing="1">DECOMPOSITION</text>
+  </g>
+  <path d="M330 48V312" stroke="#93c5fd" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Thermal image input. -->
+  <g transform="translate(385 112)">
+    <rect width="128" height="128" rx="18" fill="#0d2038" stroke="#67e8f9" stroke-opacity="0.75" stroke-width="2"/>
+    <rect x="10" y="10" width="108" height="108" rx="12" fill="#101b36"/>
+    <ellipse cx="66" cy="69" rx="38" ry="30" fill="url(#heat)" opacity="0.92" filter="url(#blur)"/>
+    <path d="M25 74c9-21 21-30 39-28 16 2 25 13 40 11M30 86c11-14 24-19 39-16 12 2 21 9 32 7" fill="none" stroke="#fde68a" stroke-opacity="0.8" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="73" cy="58" r="6" fill="#fff7ad"/>
+    <path d="M73 34V47M73 69V82M49 58H63M83 58H97" stroke="#fff7ad" stroke-width="2"/>
+  </g>
+  <text x="449" y="281" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="750" text-anchor="middle" letter-spacing="1">INPUT</text>
+
+  <!-- Frequency plane: center is low frequency; outer bins are high frequency. -->
+  <path d="M524 176H583" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(602 94)">
+    <rect width="164" height="164" rx="24" fill="#101d34" stroke="url(#accent)" stroke-width="3"/>
+    <rect x="20" y="20" width="124" height="124" rx="12" fill="#071322" stroke="#64748b" stroke-opacity="0.72" stroke-width="2"/>
+    <g fill="#22d3ee" opacity="0.9">
+      <circle cx="35" cy="36" r="4"/><circle cx="61" cy="26" r="3"/><circle cx="98" cy="34" r="4"/><circle cx="129" cy="45" r="3"/>
+      <circle cx="27" cy="76" r="3"/><circle cx="136" cy="80" r="4"/><circle cx="40" cy="125" r="4"/><circle cx="121" cy="128" r="3"/>
+      <circle cx="63" cy="137" r="3"/><circle cx="105" cy="24" r="2"/>
+    </g>
+    <rect x="51" y="51" width="62" height="62" rx="10" fill="url(#heat)"/>
+    <rect x="43" y="43" width="78" height="78" rx="13" fill="none" stroke="#fde68a" stroke-opacity="0.8" stroke-width="2"/>
+    <circle cx="82" cy="82" r="9" fill="#fff7ad"/>
+  </g>
+
+  <!-- Fork into complementary low- and high-frequency paths. -->
+  <path d="M773 176H824V103H871" fill="none" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M824 176V257H871" fill="none" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Learned mapping nodes: large W marks only, no micro-labels. -->
+  <g transform="translate(887 72)">
+    <circle cx="31" cy="31" r="28" fill="#171f3a" stroke="#c4b5fd" stroke-width="2"/>
+    <text x="31" y="41" fill="#e9d5ff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle">W</text>
+  </g>
+  <g transform="translate(887 226)">
+    <circle cx="31" cy="31" r="28" fill="#102638" stroke="#67e8f9" stroke-width="2"/>
+    <text x="31" y="41" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle">W</text>
+  </g>
+
+  <!-- Low-frequency structure response. -->
+  <path d="M949 103H981" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(995 45)">
+    <rect width="132" height="132" rx="18" fill="#0d2038" stroke="#c4b5fd" stroke-opacity="0.82" stroke-width="2"/>
+    <rect x="10" y="10" width="112" height="112" rx="12" fill="#101b36"/>
+    <ellipse cx="66" cy="69" rx="37" ry="28" fill="url(#heat)" opacity="0.9"/>
+    <ellipse cx="66" cy="69" rx="24" ry="17" fill="#fde68a" opacity="0.92"/>
+    <path d="M31 73c10-17 22-24 36-22 15 1 24 10 35 8" fill="none" stroke="#fff7ad" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="1152" y="121" fill="#e9d5ff" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="1">LOW</text>
+
+  <!-- High-frequency residual response. -->
+  <path d="M949 257H981" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(995 191)">
+    <rect width="132" height="132" rx="18" fill="#0d2038" stroke="#67e8f9" stroke-opacity="0.84" stroke-width="2"/>
+    <rect x="10" y="10" width="112" height="112" rx="12" fill="#101b36"/>
+    <g fill="#22d3ee">
+      <circle cx="24" cy="29" r="3"/><circle cx="47" cy="20" r="2"/><circle cx="73" cy="27" r="3"/><circle cx="106" cy="22" r="2"/>
+      <circle cx="116" cy="48" r="3"/><circle cx="20" cy="58" r="2"/><circle cx="31" cy="92" r="3"/><circle cx="51" cy="112" r="2"/>
+      <circle cx="81" cy="115" r="3"/><circle cx="108" cy="101" r="2"/><circle cx="117" cy="75" r="3"/>
+    </g>
+    <path d="M28 83l15-19 12 10 13-29 12 35 12-14 16 18" fill="none" stroke="#fde68a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25 96H108M35 106H96" stroke="#fb7185" stroke-opacity="0.48" stroke-width="2"/>
+  </g>
+  <text x="1152" y="267" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="1">HIGH</text>
+</svg>
