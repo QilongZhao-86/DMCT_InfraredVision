@@ -34,12 +34,12 @@ The paper evaluates the framework on **infrared image enhancement, depth estimat
 
 Table IV reports the final Ours results for infrared small-target detection. Run-level checkpoint evaluations and file hashes are catalogued separately in [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) and the linked weights Release.
 
-| Dataset | Method | mIoU ↑ | F1 ↑ | Pd ↑ | Fa ↓ (×10⁻⁴) |
+| Dataset | Method | mIoU ↑ | F1 ↑ | Pd ↑ | Fa ↓ |
 |:--|:--:|--:|--:|--:|--:|
-| NUDT-SIRST | **Ours** | **95.26** | **97.57** | **99.26** | **0.0064** |
-| IRSTD-1K | **Ours** | **66.40** | **79.81** | **92.26** | **0.2019** |
-| IRSTDID-SKY | **Ours** | **72.65** | **84.16** | **98.72** | **0.0079** |
-| Overall | **Ours** | **78.10** | **87.18** | **96.75** | **0.0743** |
+| NUDT-SIRST | **Ours** | **95.26** | **97.57** | **99.26** | **0.00000064** |
+| IRSTD-1K | **Ours** | **66.40** | **79.81** | **92.26** | **0.00002019** |
+| IRSTDID-SKY | **Ours** | **72.65** | **84.16** | **98.72** | **0.00000079** |
+| Overall | **Ours** | **78.10** | **87.18** | **96.75** | **0.00000743** |
 
 > The linked weights Release contains the archived Ours checkpoints, per-file SHA-256 values, and available run metadata. [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) summarizes the recorded checkpoint evaluations.
 
@@ -60,7 +60,7 @@ The linked weights Release includes FMB segmentation checkpoints and their avail
 
 ## 🧪 Small-target detection configuration
 
-The final small-target detection configuration uses the following shared settings. False-alarm rate values are reported in units of `10⁻⁴`.
+The final small-target detection configuration uses the following shared settings.
 
 | Dataset | Input resolution | Training | Optimizer | Initial learning rate |
 |:--|:--:|:--:|:--:|--:|
