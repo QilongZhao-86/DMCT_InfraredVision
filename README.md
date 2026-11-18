@@ -13,8 +13,6 @@
 
 [Method](#method-overview) · [Results](#final-results) · [Installation](#setup) · [Training](#training) · [Citation](#citation)
 
-<img src="assets/frequency_decomposition.svg" alt="DMCT learned low- and high-frequency decomposition of a thermal image" width="100%">
-
 </div>
 
 ## ✨ Method overview
