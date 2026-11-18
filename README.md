@@ -35,6 +35,10 @@ The paper evaluates the framework on **infrared image enhancement, depth estimat
 
 Table IV reports the final Ours results for infrared small-target detection. Run-level checkpoint evaluations and file hashes are catalogued separately in [`MODEL_CHECKPOINTS.md`](MODEL_CHECKPOINTS.md) and the linked weights Release.
 
+<p align="center">
+  <img src="assets/results_overview.svg" alt="Final mIoU results for small-target detection and FMB segmentation" width="100%">
+</p>
+
 <table align="center">
   <thead>
     <tr>
