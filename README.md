@@ -27,7 +27,7 @@ Infrared perception must handle imaging variations such as low contrast, blur, s
 The paper evaluates the framework on **infrared image enhancement, depth estimation, small-target detection, and semantic segmentation**.
 
 <p align="center">
-  <img src="assets/contributions_tasks_blue.svg" alt="Three DMCT contribution pillars and four infrared perception tasks" width="100%">
+  <img src="assets/contributions_tasks_pi_style.svg" alt="DMCT data-model framework, three contribution pillars, and four infrared perception tasks" width="100%">
 </p>
 <p align="center"><sub>Contribution pillars and application tasks at a glance</sub></p>
 

@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
+  <title id="title">DMCT contributions, framework, and infrared perception tasks</title>
+  <desc id="desc">A left-to-right research overview: three DMCT contribution cards feed the central collaborative transfer framework, which supports four infrared perception tasks.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f8ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1677ff"/>
+      <stop offset="1" stop-color="#44b5ec"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd98a"/>
+      <stop offset="0.55" stop-color="#ff9d78"/>
+      <stop offset="1" stop-color="#8d75d8"/>
+    </linearGradient>
+    <pattern id="softGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1d70d8" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0 0L11 5.5L0 11Z" fill="#1677ff"/>
+    </marker>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="800" rx="28" fill="url(#page)"/>
+  <rect width="1600" height="800" rx="28" fill="url(#softGrid)"/>
+  <rect x="18" y="18" width="1564" height="764" rx="24" fill="none" stroke="#1677ff" stroke-width="2"/>
+
+  <!-- Contribution stream -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <text x="54" y="76" fill="#1677ff" font-size="29" font-weight="800" letter-spacing="0.8">CONTRIBUTIONS</text>
+    <text x="510" y="76" fill="#64748b" font-size="18" font-weight="700" letter-spacing="0.7">DATA → FRAMEWORK → TASKS</text>
+    <text x="1000" y="76" fill="#1677ff" font-size="29" font-weight="800" letter-spacing="0.8">APPLICATIONS</text>
+  </g>
+
+  <rect x="42" y="103" width="365" height="642" rx="22" fill="#ffffff" stroke="#2584ef" stroke-width="2"/>
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="58" y="122" width="333" height="178" rx="16" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <circle cx="93" cy="158" r="22" fill="#e7f2ff"/>
+    <text x="93" y="166" text-anchor="middle" fill="#1677ff" font-size="21" font-weight="800">01</text>
+    <g transform="translate(298 140)" fill="none" stroke="#1677ff" stroke-width="2.5">
+      <rect x="0" y="0" width="36" height="30" rx="6" fill="#eaf4ff"/>
+      <rect x="47" y="0" width="36" height="30" rx="6" fill="#eef0ff" stroke="#747fe7"/>
+      <path d="M36 8H47M47 22H36"/>
+      <circle cx="18" cy="15" r="5" fill="#38bdf8" stroke="none"/>
+      <path d="M56 10H74M56 18H74" stroke="#747fe7"/>
+    </g>
+    <text x="78" y="214" fill="#1677ff" font-size="21" font-weight="800">DATA–MODEL</text>
+    <text x="78" y="241" fill="#1677ff" font-size="21" font-weight="800">COLLABORATION</text>
+    <text x="78" y="267" fill="#344256" font-size="16.5">Unified data construction and</text>
+    <text x="78" y="287" fill="#344256" font-size="16.5">model transfer framework.</text>
+
+    <rect x="58" y="322" width="333" height="178" rx="16" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <circle cx="93" cy="358" r="22" fill="#e7f2ff"/>
+    <text x="93" y="366" text-anchor="middle" fill="#1677ff" font-size="21" font-weight="800">02</text>
+    <g transform="translate(296 341)" fill="none" stroke="#1677ff" stroke-width="2.5">
+      <path d="M0 42V2M0 42H88" stroke="#9bb9db" stroke-width="2"/>
+      <path d="M10 34L31 25L49 29L69 12L84 6" stroke="url(#blue)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="10" cy="34" r="3.5" fill="#38bdf8"/><circle cx="31" cy="25" r="3.5" fill="#38bdf8"/>
+      <circle cx="49" cy="29" r="3.5" fill="#8586ed"/><circle cx="69" cy="12" r="3.5" fill="#8586ed"/><circle cx="84" cy="6" r="3.5" fill="#f28ca8"/>
+    </g>
+    <text x="78" y="414" fill="#1677ff" font-size="21" font-weight="800">TASK-RESPONSIVE</text>
+    <text x="78" y="441" fill="#1677ff" font-size="21" font-weight="800">DATA GENERATION</text>
+    <text x="78" y="466" fill="#344256" font-size="16.5">Learns weights over infrared</text>
+    <text x="78" y="486" fill="#344256" font-size="16.5">imaging variations.</text>
+
+    <rect x="58" y="522" width="333" height="204" rx="16" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <circle cx="93" cy="558" r="22" fill="#e7f2ff"/>
+    <text x="93" y="566" text-anchor="middle" fill="#1677ff" font-size="21" font-weight="800">03</text>
+    <g transform="translate(300 542)" fill="none" stroke-width="2.5">
+      <rect x="0" y="0" width="80" height="52" rx="9" fill="#edf4ff" stroke="#1677ff"/>
+      <path d="M13 16H67M13 27H67M13 38H67" stroke="#b4c8e6" stroke-linecap="round"/>
+      <circle cx="27" cy="16" r="4" fill="#38bdf8" stroke="#ffffff"/>
+      <circle cx="53" cy="27" r="4" fill="#8586ed" stroke="#ffffff"/>
+      <circle cx="38" cy="38" r="4" fill="#f28ca8" stroke="#ffffff"/>
+    </g>
+    <text x="78" y="614" fill="#1677ff" font-size="21" font-weight="800">THERMAL-AWARE</text>
+    <text x="78" y="641" fill="#1677ff" font-size="21" font-weight="800">MODEL TRANSFER</text>
+    <text x="78" y="674" fill="#344256" font-size="16.5">Formation-guided adapters;</text>
+    <text x="78" y="698" fill="#344256" font-size="16.5">single-loop joint learning.</text>
+  </g>
+
+  <!-- Core framework -->
+  <rect x="445" y="103" width="475" height="642" rx="24" fill="#f3f8ff" stroke="#1677ff" stroke-width="2.5"/>
+  <path d="M445 127Q445 103 469 103H896Q920 103 920 127V180H445Z" fill="#e8f2ff"/>
+  <g font-family="Consolas, 'Courier New', monospace" text-anchor="middle">
+    <text x="682" y="144" fill="#1677ff" font-size="34" font-weight="850" letter-spacing="1">DMCT</text>
+    <text x="682" y="171" fill="#4b6485" font-size="17" font-weight="700" letter-spacing="1">DATA × MODEL TRANSFER</text>
+  </g>
+
+  <!-- Thermal observation vignette -->
+  <g transform="translate(592 211)">
+    <rect width="180" height="128" rx="18" fill="#10233a" stroke="#6ca9f4" stroke-width="2"/>
+    <rect x="10" y="10" width="160" height="108" rx="12" fill="#182847"/>
+    <ellipse cx="91" cy="66" rx="50" ry="37" fill="url(#warm)" opacity="0.8" filter="url(#softBlur)"/>
+    <path d="M37 77C53 45 70 40 88 58S121 87 145 49" fill="none" stroke="#ffe3a1" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="91" cy="59" r="7" fill="#fff4c9"/>
+  </g>
+  <text x="682" y="369" text-anchor="middle" fill="#1677ff" font-family="Consolas, 'Courier New', monospace" font-size="18" font-weight="750">INFRARED OBSERVATION</text>
+
+  <!-- Paired data/model streams -->
+  <path d="M682 386V420H570V452" fill="none" stroke="#1677ff" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M682 386V420H794V452" fill="none" stroke="#1677ff" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <g font-family="Consolas, 'Courier New', monospace" text-anchor="middle">
+    <rect x="490" y="466" width="166" height="92" rx="17" fill="#ffffff" stroke="#39a6e9" stroke-width="2"/>
+    <circle cx="533" cy="512" r="13" fill="#dff4ff" stroke="#35a8d8" stroke-width="2"/>
+    <path d="M552 498H628M552 512H628M552 526H614" stroke="#83b9dc" stroke-width="3" stroke-linecap="round"/>
+    <text x="573" y="584" fill="#1677ff" font-size="19" font-weight="800">DATA</text>
+
+    <rect x="710" y="466" width="166" height="92" rx="17" fill="#ffffff" stroke="#6f82e5" stroke-width="2"/>
+    <rect x="735" y="489" width="36" height="46" rx="6" fill="#ecefff" stroke="#7c83dc" stroke-width="2"/>
+    <path d="M782 496H853M782 510H853M782 524H838" stroke="#8d9bd5" stroke-width="3" stroke-linecap="round"/>
+    <text x="793" y="584" fill="#5e67c8" font-size="19" font-weight="800">MODEL</text>
+  </g>
+
+  <path d="M573 603V626H682M793 603V626H682V649" fill="none" stroke="#1677ff" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="526" y="655" width="312" height="58" rx="18" fill="url(#blue)"/>
+  <text x="682" y="692" text-anchor="middle" fill="#ffffff" font-family="Consolas, 'Courier New', monospace" font-size="21" font-weight="850" letter-spacing="0.5">COLLABORATIVE TRANSFER</text>
+
+  <!-- Applications -->
+  <rect x="958" y="103" width="600" height="642" rx="24" fill="#ffffff" stroke="#2584ef" stroke-width="2"/>
+
+  <!-- Enhancement -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="978" y="126" width="270" height="284" rx="17" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <rect x="1005" y="150" width="216" height="160" rx="12" fill="#eef5ff" stroke="#b6cdeb" stroke-width="1.5"/>
+    <ellipse cx="1113" cy="231" rx="54" ry="38" fill="url(#warm)" opacity="0.62" filter="url(#softBlur)"/>
+    <path d="M1026 249C1050 203 1077 194 1102 220S1157 270 1200 190" fill="none" stroke="#1677ff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1026 276H1200" stroke="#a8bfdc" stroke-width="2"/>
+    <text x="1113" y="350" text-anchor="middle" fill="#1677ff" font-size="19" font-weight="800">IMAGE ENHANCEMENT</text>
+
+    <!-- Depth -->
+    <rect x="1268" y="126" width="270" height="284" rx="17" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <rect x="1295" y="150" width="216" height="160" rx="12" fill="#eef5ff" stroke="#b6cdeb" stroke-width="1.5"/>
+    <path d="M1314 276L1360 216L1393 250L1430 185L1492 276Z" fill="#94bdeb" fill-opacity="0.72" stroke="#4c8bd2" stroke-width="2"/>
+    <path d="M1314 282C1360 264 1403 268 1440 283S1481 289 1492 281" fill="none" stroke="#1677ff" stroke-width="4"/>
+    <path d="M1314 292C1360 274 1403 278 1440 293S1481 299 1492 291" fill="none" stroke="#8b8cf7" stroke-width="3"/>
+    <text x="1403" y="350" text-anchor="middle" fill="#1677ff" font-size="19" font-weight="800">DEPTH ESTIMATION</text>
+
+    <!-- Small-target detection -->
+    <rect x="978" y="430" width="270" height="284" rx="17" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <rect x="1005" y="454" width="216" height="160" rx="12" fill="#eef5ff" stroke="#b6cdeb" stroke-width="1.5"/>
+    <g fill="none" stroke="#1677ff" stroke-width="2.5">
+      <circle cx="1113" cy="534" r="46"/><circle cx="1113" cy="534" r="28" stroke="#8b8cf7" stroke-dasharray="5 7"/>
+      <path d="M1113 467V499M1113 569V601M1046 534H1078M1148 534H1180"/>
+    </g>
+    <circle cx="1113" cy="534" r="8" fill="#f4a261"/>
+    <text x="1113" y="654" text-anchor="middle" fill="#1677ff" font-size="18" font-weight="800">SMALL-TARGET DETECTION</text>
+
+    <!-- Semantic segmentation -->
+    <rect x="1268" y="430" width="270" height="284" rx="17" fill="#f8fbff" stroke="#a7caff" stroke-width="1.5"/>
+    <rect x="1295" y="454" width="216" height="160" rx="12" fill="#eef5ff" stroke="#b6cdeb" stroke-width="1.5"/>
+    <path d="M1320 478H1486V590H1320Z" fill="#dbeafe"/>
+    <path d="M1320 478H1378V535H1320Z" fill="#38bdf8"/>
+    <path d="M1378 478H1432V535H1378Z" fill="#818cf8"/>
+    <path d="M1432 478H1486V535H1432Z" fill="#f28ca8"/>
+    <path d="M1320 535H1365V590H1320Z" fill="#f4c95d"/>
+    <path d="M1365 535H1430V590H1365Z" fill="#a78bfa"/>
+    <path d="M1430 535H1486V590H1430Z" fill="#67c7c2"/>
+    <path d="M1378 478V535M1432 478V535M1365 535V590M1430 535V590M1320 535H1486" stroke="#ffffff" stroke-width="3"/>
+    <text x="1403" y="654" text-anchor="middle" fill="#1677ff" font-size="19" font-weight="800">SEMANTIC SEGMENTATION</text>
+  </g>
+
+  <!-- Narrative arrows connect the three regions. -->
+  <path d="M408 424H432" stroke="#1677ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M922 424H945" stroke="#1677ff" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>
