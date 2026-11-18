@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">DMCT contributions and infrared perception tasks</title>
+  <desc id="desc">A clean blue-and-white infographic summarizing three DMCT contribution pillars and four evaluated infrared perception tasks.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f8ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1677ff"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1677ff" fill-opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1440" height="760" rx="24" fill="url(#paper)"/>
+  <rect width="1440" height="760" rx="24" fill="url(#dots)"/>
+
+  <!-- Contributions -->
+  <rect x="22" y="18" width="1396" height="338" rx="20" fill="#ffffff" fill-opacity="0.88" stroke="#1677ff" stroke-width="2"/>
+  <text x="52" y="65" fill="#1677ff" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="800" letter-spacing="0.5">THREE CONTRIBUTION PILLARS</text>
+  <path d="M52 83H1388" stroke="#1677ff" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Contribution card 1 -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="42" y="101" width="432" height="229" rx="17" fill="#f8fbff" stroke="#69a8ff" stroke-width="1.5"/>
+    <g transform="translate(67 159)" fill="none" stroke="#1677ff" stroke-width="3">
+      <rect x="0" y="0" width="55" height="48" rx="8" fill="#e9f3ff"/>
+      <rect x="82" y="0" width="55" height="48" rx="8" fill="#eef0ff" stroke="#6d70df"/>
+      <path d="M55 14H82M82 34H55"/>
+      <path d="M60 14H77M77 34H60" stroke="#1677ff" stroke-width="2.5"/>
+      <circle cx="27" cy="24" r="8" fill="#38bdf8" stroke="none"/>
+      <path d="M99 16H120M99 25H120M99 34H114" stroke="#6d70df" stroke-width="2.5"/>
+    </g>
+    <text x="226" y="153" fill="#1677ff" font-size="21" font-weight="800">DATA–MODEL</text>
+    <text x="226" y="180" fill="#1677ff" font-size="21" font-weight="800">COLLABORATION</text>
+    <text x="226" y="224" fill="#26364d" font-size="16.5">Links data design with</text>
+    <text x="226" y="248" fill="#26364d" font-size="16.5">model transfer for robust</text>
+    <text x="226" y="272" fill="#26364d" font-size="16.5">visual perception.</text>
+  </g>
+
+  <!-- Contribution card 2 -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="504" y="101" width="432" height="229" rx="17" fill="#f8fbff" stroke="#69a8ff" stroke-width="1.5"/>
+    <g transform="translate(533 157)" fill="none" stroke="#1677ff" stroke-width="3">
+      <path d="M0 90V8M0 90H132" stroke="#8bbcff" stroke-width="2"/>
+      <path d="M14 72L42 52L68 62L98 28L123 14" stroke="url(#blue)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="14" cy="72" r="5" fill="#38bdf8"/><circle cx="42" cy="52" r="5" fill="#38bdf8"/>
+      <circle cx="68" cy="62" r="5" fill="#8b8cf7"/><circle cx="98" cy="28" r="5" fill="#8b8cf7"/><circle cx="123" cy="14" r="5" fill="#f28ca8"/>
+    </g>
+    <text x="694" y="153" fill="#1677ff" font-size="21" font-weight="800">TASK-RESPONSIVE</text>
+    <text x="694" y="180" fill="#1677ff" font-size="21" font-weight="800">DATA GENERATION</text>
+    <text x="694" y="224" fill="#26364d" font-size="16.5">Learns imaging-variation</text>
+    <text x="694" y="248" fill="#26364d" font-size="16.5">weights for informative</text>
+    <text x="694" y="272" fill="#26364d" font-size="16.5">training observations.</text>
+  </g>
+
+  <!-- Contribution card 3 -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="966" y="101" width="432" height="229" rx="17" fill="#f8fbff" stroke="#69a8ff" stroke-width="1.5"/>
+    <g transform="translate(993 155)" fill="none" stroke-width="3">
+      <rect x="0" y="0" width="128" height="92" rx="12" fill="#f0f5ff" stroke="#1677ff"/>
+      <path d="M21 24H107M21 46H107M21 68H107" stroke="#b4c8e6" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="39" cy="24" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="82" cy="46" r="7" fill="#8586ed" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="59" cy="68" r="7" fill="#f28ca8" stroke="#ffffff" stroke-width="2"/>
+      <path d="M39 31L82 39M82 53L59 61" stroke="#1677ff" stroke-width="2"/>
+    </g>
+    <text x="1160" y="153" fill="#1677ff" font-size="21" font-weight="800">THERMAL-AWARE</text>
+    <text x="1160" y="180" fill="#1677ff" font-size="21" font-weight="800">MODEL TRANSFER</text>
+    <text x="1160" y="218" fill="#26364d" font-size="16.5">Formation-guided cues</text>
+    <text x="1160" y="242" fill="#26364d" font-size="16.5">condition light adapters;</text>
+    <text x="1160" y="266" fill="#26364d" font-size="16.5">single-loop learning</text>
+    <text x="1160" y="290" fill="#26364d" font-size="16.5">coordinates updates.</text>
+  </g>
+
+  <!-- Tasks -->
+  <rect x="22" y="380" width="1396" height="360" rx="20" fill="#ffffff" fill-opacity="0.9" stroke="#1677ff" stroke-width="2"/>
+  <text x="52" y="428" fill="#1677ff" font-family="Consolas, 'Courier New', monospace" font-size="30" font-weight="800" letter-spacing="0.5">FOUR INFRARED PERCEPTION TASKS</text>
+  <path d="M52 446H1388" stroke="#1677ff" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Task card 1: image enhancement -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="42" y="464" width="326" height="250" rx="16" fill="#f8fbff" stroke="#86b8f5" stroke-width="1.5"/>
+    <rect x="125" y="492" width="160" height="112" rx="12" fill="#eef5ff" stroke="#8bbcff" stroke-width="1.5"/>
+    <path d="M143 581C164 535 182 527 201 551S235 584 267 524" fill="none" stroke="#1677ff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M143 589H267" stroke="#adc5e4" stroke-width="2"/>
+    <circle cx="201" cy="552" r="8" fill="#f4b95e" stroke="#ffffff" stroke-width="2"/>
+    <text x="205" y="648" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">IMAGE</text>
+    <text x="205" y="676" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">ENHANCEMENT</text>
+  </g>
+
+  <!-- Task card 2: depth estimation -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="390" y="464" width="326" height="250" rx="16" fill="#f8fbff" stroke="#86b8f5" stroke-width="1.5"/>
+    <rect x="473" y="492" width="160" height="112" rx="12" fill="#eef5ff" stroke="#8bbcff" stroke-width="1.5"/>
+    <path d="M487 574L526 523L550 551L581 512L619 574Z" fill="#8bbcff" fill-opacity="0.58" stroke="#4e8de2" stroke-width="2"/>
+    <path d="M487 577C520 563 550 566 582 577S608 583 619 578" fill="none" stroke="#1677ff" stroke-width="4"/>
+    <path d="M487 586C520 572 550 575 582 586S608 592 619 587" fill="none" stroke="#8b8cf7" stroke-width="3"/>
+    <text x="553" y="648" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">DEPTH</text>
+    <text x="553" y="676" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">ESTIMATION</text>
+  </g>
+
+  <!-- Task card 3: small-target detection -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="738" y="464" width="326" height="250" rx="16" fill="#f8fbff" stroke="#86b8f5" stroke-width="1.5"/>
+    <rect x="821" y="492" width="160" height="112" rx="12" fill="#eef5ff" stroke="#8bbcff" stroke-width="1.5"/>
+    <g fill="none" stroke="#1677ff" stroke-width="2.5">
+      <circle cx="901" cy="548" r="34"/><circle cx="901" cy="548" r="20" stroke="#8b8cf7" stroke-dasharray="4 6"/>
+      <path d="M901 499V522M901 574V597M852 548H875M927 548H950"/>
+    </g>
+    <circle cx="901" cy="548" r="6" fill="#f4a261"/>
+    <text x="901" y="648" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">SMALL-TARGET</text>
+    <text x="901" y="676" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">DETECTION</text>
+  </g>
+
+  <!-- Task card 4: semantic segmentation -->
+  <g font-family="Consolas, 'Courier New', monospace">
+    <rect x="1086" y="464" width="312" height="250" rx="16" fill="#f8fbff" stroke="#86b8f5" stroke-width="1.5"/>
+    <rect x="1162" y="492" width="160" height="112" rx="12" fill="#eef5ff" stroke="#8bbcff" stroke-width="1.5"/>
+    <path d="M1179 509H1305V590H1179Z" fill="#dbeafe"/>
+    <path d="M1179 509H1220V549H1179Z" fill="#38bdf8"/>
+    <path d="M1220 509H1263V549H1220Z" fill="#818cf8"/>
+    <path d="M1263 509H1305V549H1263Z" fill="#f28ca8"/>
+    <path d="M1179 549H1211V590H1179Z" fill="#f4c95d"/>
+    <path d="M1211 549H1260V590H1211Z" fill="#a78bfa"/>
+    <path d="M1260 549H1305V590H1260Z" fill="#67c7c2"/>
+    <path d="M1220 509V549M1263 509V549M1211 549V590M1260 549V590M1179 549H1305" stroke="#ffffff" stroke-width="3"/>
+    <text x="1242" y="648" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">SEMANTIC</text>
+    <text x="1242" y="676" text-anchor="middle" fill="#1677ff" font-size="20" font-weight="800">SEGMENTATION</text>
+  </g>
+</svg>
