@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Three DMCT contribution pillars and four infrared perception tasks</title>
+  <desc id="desc">Three contribution pillars summarize data-model collaboration, task-responsive data generation, and thermal-aware model transfer with formation-guided cues and single-loop optimization. Four cards show image enhancement, depth estimation, small-target detection, and semantic segmentation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071321"/>
+      <stop offset="0.55" stop-color="#0c1b31"/>
+      <stop offset="1" stop-color="#11152b"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="0.5" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#93c5fd" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="30" fill="url(#bg)"/>
+  <rect width="1600" height="900" rx="30" fill="url(#grid)"/>
+  <rect width="7" height="900" rx="3" fill="url(#cyan)"/>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="56" y="66" fill="#f8fafc" font-size="34" font-weight="850" letter-spacing="1.5">THREE CONTRIBUTION PILLARS</text>
+    <path d="M56 88H1544" stroke="#64748b" stroke-opacity="0.35" stroke-width="2"/>
+  </g>
+
+  <!-- Contribution 1 -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="40" y="112" width="480" height="298" rx="24" fill="#0d1b30" stroke="#38bdf8" stroke-opacity="0.42" stroke-width="2"/>
+    <text x="72" y="160" fill="#67e8f9" font-size="30" font-weight="850">01</text>
+    <g transform="translate(413 136)" fill="none" stroke="#67e8f9" stroke-width="3">
+      <circle cx="20" cy="20" r="9" fill="#22d3ee" fill-opacity="0.55"/>
+      <circle cx="66" cy="20" r="9" fill="#818cf8" fill-opacity="0.55"/>
+      <circle cx="43" cy="60" r="9" fill="#fb7185" fill-opacity="0.55"/>
+      <path d="M29 20H57M25 28L38 52M61 28L48 52"/>
+    </g>
+    <text x="72" y="226" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">DATA–MODEL</text>
+    <text x="72" y="260" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">COLLABORATION</text>
+    <text x="72" y="322" fill="#cbd5e1" font-size="21">A unified transfer framework</text>
+    <text x="72" y="352" fill="#cbd5e1" font-size="21">for infrared visual perception.</text>
+  </g>
+
+  <!-- Contribution 2 -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="560" y="112" width="480" height="298" rx="24" fill="#101a31" stroke="#818cf8" stroke-opacity="0.48" stroke-width="2"/>
+    <text x="592" y="160" fill="#c4b5fd" font-size="30" font-weight="850">02</text>
+    <g transform="translate(922 132)">
+      <rect x="0" y="0" width="82" height="66" rx="12" fill="#101d34" stroke="#818cf8" stroke-width="2"/>
+      <path d="M12 50C23 30 32 20 42 31S61 45 72 14" fill="none" stroke="url(#violet)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="14" cy="50" r="4" fill="#67e8f9"/><circle cx="42" cy="31" r="4" fill="#c4b5fd"/><circle cx="72" cy="14" r="4" fill="#fb7185"/>
+    </g>
+    <text x="592" y="226" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">TASK-RESPONSIVE</text>
+    <text x="592" y="260" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">DATA GENERATION</text>
+    <text x="592" y="322" fill="#cbd5e1" font-size="21">Learns imaging-variation weights</text>
+    <text x="592" y="352" fill="#cbd5e1" font-size="21">to synthesize informative observations.</text>
+  </g>
+
+  <!-- Contribution 3: includes formation-guided transfer and single-loop coordination. -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="1080" y="112" width="480" height="298" rx="24" fill="#17182f" stroke="#fb7185" stroke-opacity="0.44" stroke-width="2"/>
+    <text x="1112" y="160" fill="#fda4af" font-size="30" font-weight="850">03</text>
+    <g transform="translate(1440 132)" fill="none" stroke-width="3">
+      <rect x="0" y="0" width="78" height="66" rx="12" stroke="#fb7185"/>
+      <path d="M15 21H62M15 34H62M15 47H62" stroke="#64748b" stroke-linecap="round"/>
+      <circle cx="25" cy="21" r="5" fill="#c4b5fd" stroke="#c4b5fd"/>
+      <circle cx="51" cy="34" r="5" fill="#67e8f9" stroke="#67e8f9"/>
+      <circle cx="37" cy="47" r="5" fill="#fb7185" stroke="#fb7185"/>
+    </g>
+    <text x="1112" y="226" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">THERMAL-AWARE</text>
+    <text x="1112" y="260" fill="#f8fafc" font-size="27" font-weight="800" letter-spacing="0.5">MODEL TRANSFER</text>
+    <text x="1112" y="322" fill="#cbd5e1" font-size="21">Formation-guided cues condition adapters;</text>
+    <text x="1112" y="352" fill="#cbd5e1" font-size="21">single-loop learning coordinates updates.</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="56" y="474" fill="#f8fafc" font-size="34" font-weight="850" letter-spacing="1.5">FOUR INFRARED PERCEPTION TASKS</text>
+    <path d="M56 496H1544" stroke="#64748b" stroke-opacity="0.35" stroke-width="2"/>
+  </g>
+
+  <!-- Task 1: image enhancement -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="40" y="520" width="360" height="330" rx="24" fill="#0d1b30" stroke="#38bdf8" stroke-opacity="0.38" stroke-width="2"/>
+    <rect x="145" y="560" width="150" height="112" rx="18" fill="#101b36" stroke="#67e8f9" stroke-opacity="0.72" stroke-width="2"/>
+    <ellipse cx="220" cy="616" rx="42" ry="31" fill="url(#heat)" opacity="0.84" filter="url(#glow)"/>
+    <path d="M170 625C188 591 207 589 222 609S252 636 270 594" fill="none" stroke="#fde68a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M163 647H277" stroke="#64748b" stroke-opacity="0.55" stroke-width="2"/>
+    <text x="220" y="744" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">IMAGE</text>
+    <text x="220" y="779" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">ENHANCEMENT</text>
+  </g>
+
+  <!-- Task 2: depth estimation -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="430" y="520" width="360" height="330" rx="24" fill="#101a31" stroke="#818cf8" stroke-opacity="0.42" stroke-width="2"/>
+    <rect x="535" y="560" width="150" height="112" rx="18" fill="#101b36" stroke="#a78bfa" stroke-opacity="0.72" stroke-width="2"/>
+    <path d="M550 642L582 602L608 628L632 588L671 642Z" fill="#4338ca" fill-opacity="0.6" stroke="#a78bfa" stroke-width="2"/>
+    <path d="M550 646C577 634 604 637 631 645S660 651 671 646" fill="none" stroke="#22d3ee" stroke-width="4"/>
+    <path d="M550 655C577 643 604 646 631 654S660 660 671 655" fill="none" stroke="#67e8f9" stroke-opacity="0.62" stroke-width="3"/>
+    <text x="610" y="744" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">DEPTH</text>
+    <text x="610" y="779" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">ESTIMATION</text>
+  </g>
+
+  <!-- Task 3: small-target detection -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="820" y="520" width="360" height="330" rx="24" fill="#11192e" stroke="#22d3ee" stroke-opacity="0.42" stroke-width="2"/>
+    <rect x="925" y="560" width="150" height="112" rx="18" fill="#101b36" stroke="#67e8f9" stroke-opacity="0.72" stroke-width="2"/>
+    <g fill="none" stroke="#c4b5fd" stroke-width="2">
+      <circle cx="1000" cy="616" r="35"/><circle cx="1000" cy="616" r="22" stroke-dasharray="4 7"/>
+      <path d="M1000 565V590M1000 642V667M949 616H974M1026 616H1051"/>
+    </g>
+    <circle cx="1000" cy="616" r="7" fill="#fde68a"/>
+    <circle cx="1000" cy="616" r="15" fill="#fb7185" opacity="0.35" filter="url(#glow)"/>
+    <text x="1000" y="744" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">SMALL-TARGET</text>
+    <text x="1000" y="779" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">DETECTION</text>
+  </g>
+
+  <!-- Task 4: semantic segmentation -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="1210" y="520" width="350" height="330" rx="24" fill="#17182f" stroke="#fb7185" stroke-opacity="0.4" stroke-width="2"/>
+    <rect x="1310" y="560" width="150" height="112" rx="18" fill="#101b36" stroke="#fb7185" stroke-opacity="0.72" stroke-width="2"/>
+    <path d="M1328 579H1442V653H1328Z" fill="#172554"/>
+    <path d="M1328 579H1370V616H1328Z" fill="#22d3ee" fill-opacity="0.82"/>
+    <path d="M1370 579H1407V616H1370Z" fill="#818cf8" fill-opacity="0.85"/>
+    <path d="M1407 579H1442V616H1407Z" fill="#fb7185" fill-opacity="0.84"/>
+    <path d="M1328 616H1360V653H1328Z" fill="#fde68a" fill-opacity="0.88"/>
+    <path d="M1360 616H1400V653H1360Z" fill="#7c3aed" fill-opacity="0.86"/>
+    <path d="M1400 616H1442V653H1400Z" fill="#67e8f9" fill-opacity="0.82"/>
+    <path d="M1370 579V616M1407 579V616M1360 616V653M1400 616V653M1328 616H1442" stroke="#071321" stroke-width="3"/>
+    <text x="1385" y="744" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">SEMANTIC</text>
+    <text x="1385" y="779" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800">SEGMENTATION</text>
+  </g>
+</svg>
